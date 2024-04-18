@@ -1,0 +1,12 @@
+body{
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+
+.custom-img {
+    position: absolute;
+    width: 1200px;
+    max-width: none; /* Remove any max-width constraint */
+    right: 3%;
+}
