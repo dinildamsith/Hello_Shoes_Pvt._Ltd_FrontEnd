@@ -1,12 +1,18 @@
 body{
     overflow-x: hidden;
     overflow-y: hidden;
+
 }
 
 
-.custom-img {
+.shoes-img {
     position: absolute;
     width: 1200px;
     max-width: none; /* Remove any max-width constraint */
     right: 3%;
+
+}
+
+.ml-3 {
+    margin-left: 3rem !important; /* Adjust as needed */
 }
