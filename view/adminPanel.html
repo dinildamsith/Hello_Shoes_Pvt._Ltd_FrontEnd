@@ -8,7 +8,7 @@
 
      <link rel="icon" type="image/x-icon" href="../img/logo2.png" sizes="32x32">
      <link rel="stylesheet" href="../bootstrap-5.3.1-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../css/adminPanel.css">
+    <link rel="stylesheet" href="../css/menuBar.css">
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Include Font Awesome for icons -->
@@ -17,59 +17,64 @@
 </head>
 <body>
 
-<div class="container-fluid position-fixed">
-    <div class="row">
-        <div class="col-3" style="height: 100vh; width: 290px; background-color: #6a6a6a">
+<div id="mobile_navi">
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-            <div class="col">
-                <img src="../img/logo2.png" alt="" class="mx-auto d-block logoCss">
-            </div>
+        <div class="col">
+            <img src="../img/logo2.png" alt="" class="mx-auto d-block logoCss">
+        </div>
 
-            <div class="col mt-5 text-center">
-                <button class="btn btn-lg btnCss text-white">
-                    <img src="../img/admin-panel.png" alt="" class="btnImageCss">
-                    Dash Board
-                </button>
-            </div>
+        <div class="col mt-5 text-center">
+            <button class="btn btn-lg btnCss text-white">
+                <img src="../img/admin-panel.png" alt="" class="btnImageCss">
+                Dash Board
+            </button>
+        </div>
 
-            <div class="col mt-2 text-center">
-                <button class="btn  btn-lg btnCss text-white">
-                    <img src="../img/customers.png" alt="" class="btnImageCss">
-                    Customers
-                </button>
-            </div>
+        <div class="col mt-2 text-center">
+            <button class="btn  btn-lg btnCss text-white">
+                <img src="../img/customers.png" alt="" class="btnImageCss">
+                Customers
+            </button>
+        </div>
 
-            <div class="col mt-2 text-center">
-                <button class="btn  btn-lg btnCss text-white">
-                    <img src="../img/items.png" alt="" class="btnImageCss">
-                    Inventory
-                </button>
-            </div>
+        <div class="col mt-2 text-center">
+            <button class="btn  btn-lg btnCss text-white">
+                <img src="../img/items.png" alt="" class="btnImageCss">
+                Inventory
+            </button>
+        </div>
 
-            <div class="col mt-2 text-center">
-                <button class="btn  btn-lg btnCss text-white">
-                    <img src="../img/sales.png" alt="" class="btnImageCss saleImage">
-                    Sale
-                </button>
-            </div>
+        <div class="col mt-2 text-center">
+            <button class="btn  btn-lg btnCss text-white">
+                <img src="../img/sales.png" alt="" class="btnImageCss saleImage">
+                Sale
+            </button>
+        </div>
 
-            <div class="col mt-2 text-center">
-                <button class="btn  btn-lg btnCss text-white">
-                    <img src="../img/supplier.png" alt="" class="btnImageCss">
-                    Suppliers
-                </button>
-            </div>
-            <div class="col mt-2 text-center">
-                <button class="btn  btn-lg btnCss text-white">
-                    <img src="../img/employees.png" alt="" class="btnImageCss">
-                    Employees
-                </button>
-            </div>
-
-
+        <div class="col mt-2 text-center">
+            <button class="btn  btn-lg btnCss text-white">
+                <img src="../img/supplier.png" alt="" class="btnImageCss">
+                Suppliers
+            </button>
+        </div>
+        <div class="col mt-2 text-center">
+            <button class="btn  btn-lg btnCss text-white">
+                <img src="../img/employees.png" alt="" class="btnImageCss">
+                Employees
+            </button>
         </div>
 
     </div>
+
+    <div id="main">
+        <span style="font-size:30px;cursor:pointer; color: #000000" onclick="openNav()">&#9776; Menu</span>
+    </div>
 </div>
+
+
+
+<script src="../js/mobileNavJs.js"></script>
 </body>
 </html>
