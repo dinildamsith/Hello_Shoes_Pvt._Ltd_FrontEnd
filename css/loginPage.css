@@ -28,6 +28,12 @@ body {
 .ml-25 {
     margin-left: 24% !important;
 }
+.mt-10 {
+    margin-top: 10rem !important;
+}
+.mt-24 {
+    margin-top: 24rem !important;
+}
 
 .w-16 {
     width: 16% !important;
@@ -36,6 +42,12 @@ body {
     font-size: 55px;
 }
 
+a {
+    text-decoration: none; /* Remove underline */
+}
+form {
+    height: 21px;
+}
 
 /*text field in icon set*/
 
