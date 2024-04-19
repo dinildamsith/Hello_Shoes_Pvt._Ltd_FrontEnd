@@ -23,11 +23,12 @@ body {
     width: 108% !important;
 }
 .ml-5 {
-    margin-left: -5% !important;
+    margin-left: -10% !important;
 }
 .ml-25 {
     margin-left: 24% !important;
 }
+
 .mt-10 {
     margin-top: 10rem !important;
 }
