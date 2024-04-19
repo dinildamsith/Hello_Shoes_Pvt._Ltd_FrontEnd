@@ -10,16 +10,9 @@
     }
 
     .outline-black{
-
-        --bs-border-opacity: 1;
+        --bs-border-opacity: 3;
         border-color: rgba(var(--bs-black-rgb), var(--bs-border-opacity)) !important;
-
     }
 
-    .bg-opacity-yellow{
-
-        background-color: rgba(255, 255, 0, 0.5); /* Yellow color with 50% opacity */
-
-    }
 
 }
