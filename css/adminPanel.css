@@ -1,0 +1,41 @@
+body {
+    font-family: 'K2D', sans-serif;
+}
+
+.sideBar{
+    height: 100%;
+    width: 270px;
+}
+
+.btnGroupCss{
+    width: 270px;
+    position: absolute;
+    top: 166px;
+}
+
+.btnCss{
+    color: black;
+    font-size: 21px;
+    font-weight: bold;
+    width: 236px;
+    height: 77px;
+
+}
+
+.btnImageCss {
+    width: 63px;
+    height: 58px;
+    margin-right: 26px; /* Adjust the spacing between the image and text as needed */
+    vertical-align: middle; /* Align the image vertically with the text */
+}
+.saleImage{
+    margin-right: 68px;
+}
+
+
+
+.logoCss{
+    width: 30%;
+    left: -21px;
+}
+
