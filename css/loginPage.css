@@ -1,0 +1,24 @@
+body{
+    overflow-x: hidden;
+}
+
+.bg-yellow {
+    background: hsla(41, 100%, 50%, 1);
+    background: linear-gradient(280deg, hsla(41, 100%, 50%, 1) 0%, hsla(41, 29%, 63%, 1) 50%, hsla(41, 100%, 50%, 1) 100%);
+    background: -moz-linear-gradient(280deg, hsla(41, 100%, 50%, 1) 0%, hsla(41, 29%, 63%, 1) 50%, hsla(41, 100%, 50%, 1) 100%);
+    background: -webkit-linear-gradient(280deg, hsla(41, 100%, 50%, 1) 0%, hsla(41, 29%, 63%, 1) 50%, hsla(41, 100%, 50%, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FFAD00", endColorstr="#BBAA84", GradientType=1);
+}
+
+
+.height100vh {
+    height: 100vh;
+
+}
+
+.w-107{
+    width: 108% !important;
+}
+.ml-5 {
+    margin-left: -5% !important;
+}
