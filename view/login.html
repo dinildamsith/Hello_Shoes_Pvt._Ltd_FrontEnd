@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="../bootstrap-5.3.1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="../css/loginPage.css">
+    <link rel="stylesheet" href="../css/loginPageMediaQuary.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Include Font Awesome for icons -->
@@ -19,40 +20,46 @@
 
 <div class="row">
 
-    <div class="col-6 bg-yellow d-flex align-items-center justify-content-center height100vh">
+    <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 bg-yellow d-flex align-items-center justify-content-center height100vh">
         <img src="../img/GroupShoes.png" class="img-fluid w-107 ml-5" alt="">
     </div>
 
 
-    <div class="col-6 bg-white">
+    <div class="col-12 col-xxl-6 col-xxl-6 col-lg-6 col-md-6 col-sm-6  position-ab trans bg-white">
             <h1 class="text-center mt-5 fw-bold fs-55">Login</h1>
 
             <img src="../img/logo2.png" alt="" class="mx-auto d-block w-16 mt-5">
 
             <form>
 
-                <!-- Email -->
-                <div data-mdb-input-init class="col-6 form-outline mt-5 ml-25">
-                    <input type="email" class="form-control ps-5" placeholder="Email" />
-                    <i class="fas fa-envelope ms-3"></i>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <!-- Email -->
+                        <div data-mdb-input-init class="col-12 col-xxl-8 col-xl-8 col-lg-8 col-md-12 col-sm-12 form-outline mt-5 d-flex align-items-center">
+                            <input type="email" class="form-control ps-5  outline-black fw-bold" placeholder="Email" />
+                            <i class="fas fa-envelope ms-3"></i>
+                        </div>
+                        <br>
+                        <!-- Password -->
+                        <div data-mdb-input-init class="col-12 col-xxl-8 col-xl-8 col-lg-8 col-md-12 col-sm-12 form-outline mt-3 d-flex align-items-center">
+                            <input type="password" class="form-control ps-5 outline-black fw-bold" placeholder="Password" />
+                            <i class="fas fa-lock ms-3"></i>
+                        </div>
+                        <br>
+                        <!-- User -->
+                        <div data-mdb-input-init class="col-12 col-xxl-8 col-xl-8 col-lg-8 col-md-12 col-sm-12 form-outline mt-3 d-flex align-items-center">
+                            <select class="form-control ps-5 outline-black fw-bold" id="sel1">
+                                <option value="option1" disabled selected>Select Role</option>
+                                <option value="option2">Admin</option>
+                                <option value="option3">User</option>
+                            </select>
+                            <i class="fas fa-user ms-3"></i>
+                        </div>
+                        <br>
+                    </div>
                 </div>
 
-                <!-- Password -->
-                <div data-mdb-input-init class="col-6 form-outline mt-3 ml-25">
-                    <input type="password" class="form-control ps-5 " placeholder="Password" />
-                    <i class="fas fa-lock ms-3"></i>
-                </div>
-
-                <!-- User -->
-                <div data-mdb-input-init class="col-6 form-outline mt-3 ml-25">
-                    <select class="form-control ps-5" id="sel1">
-                        <option value="option1" disabled selected>Select Role</option>
-                        <option value="option2">Admin</option>
-                        <option value="option3">User</option>
-                    </select>
-                    <i class="fas fa-user ms-3"></i>
-                </div>
-                <h5 class="text-center mt-1" style="font-size: 12px">Don’t  have an account ? <a href="">Sign Up</a></h5>
+                <h5 class="text-center mt-1 fw-bold" style="font-size: 12px">Don’t  have an account ? <a href="">Sign Up</a></h5>
 
                 <div class="container text-center mt-3"> <!-- Container for centering -->
                     <div class="row">
