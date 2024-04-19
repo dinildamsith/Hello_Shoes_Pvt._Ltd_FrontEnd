@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/loginPage.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Include Font Awesome for icons -->
     <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
 
@@ -24,7 +25,49 @@
     
     
     <div class="col-6 bg-white">
+            <h1 class="text-center mt-5 fw-bold fs-55">Login</h1>
 
+            <img src="../img/logo2.png" alt="" class="mx-auto d-block w-16 mt-5">
+
+            <form>
+
+
+
+
+                <!-- Email -->
+                <div data-mdb-input-init class="col-6 form-outline mt-5 ml-25">
+                    <input type="email" class="form-control ps-5" placeholder="Email" />
+                    <i class="fas fa-envelope ms-3"></i>
+                </div>
+
+                <!-- Password -->
+                <div data-mdb-input-init class="col-6 form-outline mt-3 ml-25">
+                    <input type="password" class="form-control ps-5 " placeholder="Password" />
+                    <i class="fas fa-lock ms-3"></i>
+                </div>
+
+                <!-- User -->
+                <div data-mdb-input-init class="col-6 form-outline mt-3 ml-25">
+                    <select class="form-control ps-5" id="sel1">
+                        <option value="option1" disabled selected>Select Role</option>
+                        <option value="option2">Admin</option>
+                        <option value="option3">User</option>
+                    </select>
+                    <i class="fas fa-user ms-3"></i>
+                </div>
+
+                <div class="container text-center mt-3"> <!-- Container for centering -->
+                    <div class="row">
+                        <div class="col"> <!-- Column to center the button -->
+                            <a href="#" class="btn btn-warning btn-lg active fw-bold" role="button" aria-pressed="true">
+                                <i class="fas fa-sign-in-alt"></i> Login
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
     </div>
 
 
