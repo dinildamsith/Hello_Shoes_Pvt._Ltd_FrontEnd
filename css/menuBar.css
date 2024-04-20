@@ -68,10 +68,36 @@ body {
     left: -21px;
 }
 
+.dashBordSet{
+   position: absolute;
+   left: 257px;
+   width: calc(100% - 250px);
 
+}
 
 
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+
+@media (min-width: 748px) {
+    #menuButton {
+        display: none;
+    }
+    #closeButton {
+        display: none;
+    }
+}
+
+
+@media (max-width: 748px) {
+    .dashBordSet{
+        position: absolute;
+        left: 10px;
+        width: 100%;
+
+    }
+}
+

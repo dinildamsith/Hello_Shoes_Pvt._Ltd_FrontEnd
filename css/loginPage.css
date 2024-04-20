@@ -28,6 +28,9 @@ body {
 .ml-25 {
     margin-left: 24% !important;
 }
+.ml-1{
+    margin-left: 1% !important;
+}
 .mt-10 {
     margin-top: 10rem !important;
 }
@@ -66,4 +69,9 @@ form {
     transform: translateY(-50%); /* Adjust the vertical position of the icon */
     pointer-events: none; /* Disable pointer events on the icon */
     color: #888; /* Icon color */
+}
+
+
+.bg-shade{
+    background-color: #6a6a6a;
 }

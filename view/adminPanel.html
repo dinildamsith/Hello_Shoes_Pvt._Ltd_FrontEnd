@@ -9,17 +9,30 @@
      <link rel="icon" type="image/x-icon" href="../img/logo2.png" sizes="32x32">
      <link rel="stylesheet" href="../bootstrap-5.3.1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="../css/menuBar.css">
+    <link rel="stylesheet" href="../css/loginPage.css">
+    <link rel="stylesheet" href="../css/dashbord.css">
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Include Font Awesome for icons -->
      <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/menu-grid-r.css' rel='stylesheet'>
+
+
+    <style>
+
+
+
+
+    </style>
+
 </head>
 <body>
 
+
+
+
 <div id="mobile_navi">
     <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="javascript:void(0)" class="closebtn" id="closeButton" onclick="closeNav()">&times;</a>
 
         <div class="col">
             <img src="../img/logo2.png" alt="" class="mx-auto d-block logoCss">
@@ -83,9 +96,76 @@
     </div>
 
     <div id="main">
-        <span style="font-size:30px;cursor:pointer; color: #000000" onclick="openNav()">&#9776;Menu Bar</span>
+        <span id="menuButton" style="font-size:30px;cursor:pointer; color: #000000" onclick="openNav()">&#9776;</span>
+    </div>
+
+</div>
+
+<div class="container-fluid dashBordSet">
+    <div class="row">
+
+        <div class="col-12 col-xxl-10 col-xl-10 col-lg-9 col-md-8 col-sm-7">
+            <h1>Good Morning</h1>
+        </div>
+
+        <div class="col-12 col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-5">
+            <h3><i class="fas fa-user-shield"></i> Admin</h3>
+        </div>
+
+        <div class="col-12">
+            <h2>Welcome Hello Shoes Management System</h2>
+        </div>
+
+        <div class="col-11 col-xxl-4 col-xl-3 col-lg-3 col-md-4 col-sm-5                    mt-5 bg-shade rounded-4 h-200">
+            <div class="mt-4">
+                <label for="birthday" class="mt-0 fw-bold text-black">Select Date:</label>
+                <input type="date" id="birthday" name="birthday">
+            </div>
+
+        </div>
+
+        <div class="col-11 col-xxl-3 col-xl-4 col-lg-4 col-md-6  col-sm-6             h-100c  rounded-4 d-flex align-items-center mt-5 ml-1">
+            <div class="row mt-5">
+
+                <div class="mt-4"></div>
+
+                <div class="col-12 col-xxl-12 h-100c bg-shade rounded-4 d-flex align-items-center mt-5 ml-1">
+                    <img src="../img/totalSale.png" class="btnImageCss mt-4 mr-3" alt="">
+                    <div>
+                        <h2 class="text-center">Total Sale</h2>
+                        <h3 class="text-center">00</h3>
+                    </div>
+                </div>
+
+                <div class="col-12 col-xxl-12 h-100c bg-shade rounded-4 d-flex align-items-center mt-2 ml-1">
+                    <img src="../img/profit.png" class="btnImageCss mt-4 mr-3" alt="">
+                    <div>
+                        <h2 class="text-center">Total Profit</h2>
+                        <h3 class="text-center">00</h3>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="col-11 col-xxl-4 col-xl-4 col-lg-4 col-md-10 col-sm-11  h-511 bg-shade rounded-4 d-flex flex-column justify-content-start align-items-center mt-6 ml-1 mt-8">
+            <h2 class="text-center">Most Sale Item</h2>
+            <img src="../img/Shoe.png" alt="" class="mt-5" style="max-width: 80%;">
+            <h2 class="text-center mt-5">Most Sale Item Qty</h2>
+            <h2 class="text-center">00</h2>
+        </div>
+
+
+
+
+
     </div>
 </div>
+
+
 
 
 

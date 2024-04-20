@@ -10,3 +10,21 @@ function closeNav() {
     document.body.style.backgroundColor = "white";
 }
 
+window.onload = function() {
+    openNav(); // Call the openNav function when the window is loaded
+};
+document.addEventListener("DOMContentLoaded", function() {
+    openNav(); // Call the openNav function when the DOM content is loaded
+});
+
+
+window.addEventListener('DOMContentLoaded', function() {
+    if (748<innerWidth) {
+        openNav();
+    }
+});
+window.addEventListener('DOMContentLoaded', function() {
+    if (749<innerWidth) {
+        closeNav();
+    }
+});
