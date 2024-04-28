@@ -8,7 +8,8 @@
     <link rel="icon" type="image/x-icon" href="../img/logo2.png" sizes="32x32">
     <link rel="stylesheet" href="../bootstrap-5.3.1-dist/css/bootstrap.css">
     <title>Customer Page</title>
-
+    <link rel="stylesheet" href="../css/menuBar.css">
+    <link rel="stylesheet" href="../css/loginPage.css">
 
      <link rel="stylesheet" href="../bootstrap-5.3.1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="../css/menuBar.css">
@@ -21,6 +22,78 @@
 </head>
 <body>
 
+
+<div id="mobile_navi">
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" id="closeButton" onclick="closeNav()">&times;</a>
+
+        <div class="col">
+            <img src="../img/logo2.png" alt="" class="mx-auto d-block logoCss">
+        </div>
+
+        <div class="col mt-5 text-center">
+            <a href="">
+                <button class="btn btn-lg btnCss text-white">
+                    <img src="../img/admin-panel.png" alt="" class="btnImageCss ml-5">
+                    Dash Board
+                </button>
+            </a>
+        </div>
+
+        <div class="col mt-2 text-center">
+            <a href="../view/customerPage.html">
+                <button class="btn  btn-lg btnCss text-white">
+                    <img src="../img/customers.png" alt="" class="btnImageCss">
+                    Customers
+                </button>
+            </a>
+        </div>
+
+        <div class="col mt-2 text-center">
+            <a href="">
+                <button class="btn  btn-lg btnCss text-white">
+                    <img src="../img/items.png" alt="" class="btnImageCss">
+                    Inventory
+                </button>
+            </a>
+        </div>
+
+        <div class="col mt-2 text-center">
+            <a href="">
+                <button class="btn  btn-lg btnCss text-white">
+                    <img src="../img/sales.png" alt="" class="btnImageCss saleImage">
+                    Sale
+                </button>
+            </a>
+        </div>
+
+        <div class="col mt-2 text-center">
+            <a href="">
+                <button class="btn  btn-lg btnCss text-white">
+                    <img src="../img/supplier.png" alt="" class="btnImageCss">
+                    Suppliers
+                </button>
+            </a>
+        </div>
+
+        <div class="col mt-2 text-center">
+            <a href="">
+                <button class="btn  btn-lg btnCss text-white">
+                    <img src="../img/employees.png" alt="" class="btnImageCss">
+                    Employees
+                </button>
+            </a>
+        </div>
+
+
+    </div>
+
+    <div id="main">
+        <span id="menuButton" style="font-size:30px;cursor:pointer; color: #000000" onclick="openNav()">&#9776;</span>
+    </div>
+
+</div>
+
 <div class="container-fluid dashBordSet">
     <div class="row">
 
@@ -28,8 +101,129 @@
             <h1>Customer Service</h1>
         </div>
 
+        <div class="col-12">
+            <div class="form-group">
+                <div class="search-container" style="position: relative;">
+                    <input type="text" class="form-control fw-bold" id="searchTxt" placeholder=""/>
+                    <i class="fas fa-search search-icon" id="searchBtn" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group">
+                <label for="customerIdTxt" class="text-black fw-bold">Customer Code</label>
+                <div class="search-container">
+                    <input type="text" class="form-control fw-bold" id="customerIdTxt" placeholder=""/>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group">
+                <label for="customerNameTxt" class="text-black fw-bold">Customer Name</label>
+                <div class="search-container">
+                    <input type="text" class="form-control fw-bold" id="customerNameTxt" placeholder=""/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group">
+                <label for="customerGenderOpation" class="text-black fw-bold">Customer Gender</label>
+                <div class="search-container">
+                    <select class="form-select" aria-label="Default select example" id="customerGenderOpation">
+                        <option selected>Select Gender</option>
+                        <option value="MALE">Male</option>
+                        <option value="FEMALE">Female</option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group">
+                <label for="joinDate" class="mt-0 fw-bold text-black">Select Join Date</label>
+                <div class="search-container">
+                    <input type="date" id="joinDate" name="birthday">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group">
+                <label for="birthday" class="mt-0 fw-bold text-black">Select Birthday Day</label>
+                <div class="search-container">
+                    <input type="date" id="birthday" name="birthday">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group">
+                <label for="address1" class="text-black fw-bold">Address</label>
+                <div class="search-container">
+                    <input type="text" class="form-control fw-bold" id="address1" placeholder=""/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group">
+                <label for="contact" class="text-black fw-bold">Contact Number</label>
+                <div class="search-container">
+                    <input type="text" class="form-control fw-bold" id="contact" placeholder=""/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group">
+                <label for="email" class="text-black fw-bold">Email</label>
+                <div class="search-container">
+                    <input type="text" class="form-control fw-bold" id="email" placeholder=""/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group">
+                <label for="level" class="text-black fw-bold">Level</label>
+                <div class="search-container">
+                    <input type="text" class="form-control fw-bold" id="level" placeholder=""/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group">
+                <label for="totalPoints" class="text-black fw-bold">Total Points</label>
+                <div class="search-container">
+                    <input type="text" class="form-control fw-bold" id="totalPoints" placeholder=""/>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-12">
+            <div class="form-group">
+                <label for="recentPurchaseDate" class="text-black fw-bold">Recent Purchase Date</label>
+                <div class="search-container">
+                    <input type="text" class="form-control fw-bold" id="recentPurchaseDate" placeholder=""/>
+                </div>
+            </div>
+        </div>
+
+
+
+        </div>
+
     </div>
 </div>
 
+
+<script src="../js/mobileNavJs.js"></script>
 </body>
 </html>

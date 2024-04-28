@@ -19,12 +19,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 window.addEventListener('DOMContentLoaded', function() {
-    if (748<innerWidth) {
-        openNav();
-    }
-});
-window.addEventListener('DOMContentLoaded', function() {
     if (749<innerWidth) {
         closeNav();
     }
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+    // Check window width on page load
+    if (748 < window.innerWidth) {
+        openNav();
+    }
+
+    // Add event listener for window resize
+    window.addEventListener('resize', function() {
+        // Check window width when window is resized
+        if (748 < window.innerWidth) {
+            openNav();
+        } else {
+            // Close navigation or do something else if needed
+        }
+    });
 });
