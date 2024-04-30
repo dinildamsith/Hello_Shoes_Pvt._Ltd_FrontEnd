@@ -97,128 +97,147 @@
 <div class="container-fluid dashBordSet">
     <div class="row">
 
-        <div class="col-12">
+        <div class="col-12 col-xxl-9">
             <h1>Customer Service</h1>
         </div>
 
-        <div class="col-12">
+        <div class="col-12 col-xxl-3">
             <div class="form-group">
                 <div class="search-container" style="position: relative;">
-                    <input type="text" class="form-control fw-bold" id="searchTxt" placeholder=""/>
+                    <input type="text" class="form-control fw-bold " id="searchTxt" placeholder=""/>
                     <i class="fas fa-search search-icon" id="searchBtn" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);"></i>
                 </div>
             </div>
         </div>
 
-        <div class="col-12">
-            <div class="form-group">
-                <label for="customerIdTxt" class="text-black fw-bold">Customer Code</label>
-                <div class="search-container">
-                    <input type="text" class="form-control fw-bold" id="customerIdTxt" placeholder=""/>
 
+
+        <div id="textFieldGroup" class="row mt-5">
+
+
+            <div class="col-12 col-xxl-6">
+                <div class="form-group">
+                    <label for="customerIdTxt" class="text-black fw-bold ">Customer Code</label>
+                    <div class="search-container">
+                        <input type="text" class="form-control fw-bold" id="customerIdTxt" placeholder=""/>
+
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-12">
-            <div class="form-group">
-                <label for="customerNameTxt" class="text-black fw-bold">Customer Name</label>
-                <div class="search-container">
-                    <input type="text" class="form-control fw-bold" id="customerNameTxt" placeholder=""/>
+            <div class="col-12 col-xxl-6">
+                <div class="form-group">
+                    <label for="customerNameTxt" class="text-black fw-bold">Customer Name</label>
+                    <div class="search-container">
+                        <input type="text" class="form-control fw-bold" id="customerNameTxt" placeholder=""/>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-12">
-            <div class="form-group">
-                <label for="customerGenderOpation" class="text-black fw-bold">Customer Gender</label>
-                <div class="search-container">
-                    <select class="form-select" aria-label="Default select example" id="customerGenderOpation">
-                        <option selected>Select Gender</option>
-                        <option value="MALE">Male</option>
-                        <option value="FEMALE">Female</option>
 
-                    </select>
+            <div class="col-12 col-xxl-6">
+                <div class="form-group">
+                    <label for="contact" class="text-black fw-bold">Contact Number</label>
+                    <div class="search-container">
+                        <input type="text" class="form-control fw-bold" id="contact" placeholder=""/>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-12">
-            <div class="form-group">
-                <label for="joinDate" class="mt-0 fw-bold text-black">Select Join Date</label>
-                <div class="search-container">
-                    <input type="date" id="joinDate" name="birthday">
+            <div class="col-12 col-xxl-6">
+                <div class="form-group">
+                    <label for="email" class="text-black fw-bold">Email</label>
+                    <div class="search-container">
+                        <input type="text" class="form-control fw-bold" id="email" placeholder=""/>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-12">
-            <div class="form-group">
-                <label for="birthday" class="mt-0 fw-bold text-black">Select Birthday Day</label>
-                <div class="search-container">
-                    <input type="date" id="birthday" name="birthday">
+            <div class="col-12 col-xxl-3">
+                <div class="form-group">
+                    <label for="customerGenderOpation" class="text-black fw-bold">Customer Gender</label>
+                    <div class="search-container">
+                        <select class="form-select" aria-label="Default select example" id="customerGenderOpation">
+                            <option selected>Select Gender</option>
+                            <option value="MALE">Male</option>
+                            <option value="FEMALE">Female</option>
+
+                        </select>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-12">
-            <div class="form-group">
-                <label for="address1" class="text-black fw-bold">Address</label>
-                <div class="search-container">
-                    <input type="text" class="form-control fw-bold" id="address1" placeholder=""/>
+
+            <div class="col-12 col-xxl-3">
+                <div class="form-group">
+                    <label for="address1" class="text-black fw-bold">Address 1</label>
+                    <div class="search-container">
+                        <input type="text" class="form-control fw-bold" id="address1" placeholder=""/>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-12">
-            <div class="form-group">
-                <label for="contact" class="text-black fw-bold">Contact Number</label>
-                <div class="search-container">
-                    <input type="text" class="form-control fw-bold" id="contact" placeholder=""/>
+            <div class="col-12 col-xxl-3">
+                <div class="form-group">
+                    <label for="address2" class="text-black fw-bold">Address 2</label>
+                    <div class="search-container">
+                        <input type="text" class="form-control fw-bold" id="address2" placeholder=""/>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-12">
-            <div class="form-group">
-                <label for="email" class="text-black fw-bold">Email</label>
-                <div class="search-container">
-                    <input type="text" class="form-control fw-bold" id="email" placeholder=""/>
+            <div class="col-12 col-xxl-3">
+                <div class="form-group">
+                    <label for="birthday" class="text-black fw-bold">Birthday</label>
+                    <div class="search-container">
+                        <input type="date" class="form-control fw-bold" id="birthday" name="birthday">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-12">
-            <div class="form-group">
-                <label for="level" class="text-black fw-bold">Level</label>
-                <div class="search-container">
-                    <input type="text" class="form-control fw-bold" id="level" placeholder=""/>
+
+            <div class="col-12 col-xxl-3">
+                <div class="form-group">
+                    <label for="joinDate" class="text-black fw-bold">Join Date</label>
+                    <div class="search-container">
+                        <input type="date" class="form-control fw-bold" id="joinDate" name="birthday">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-12">
-            <div class="form-group">
-                <label for="totalPoints" class="text-black fw-bold">Total Points</label>
-                <div class="search-container">
-                    <input type="text" class="form-control fw-bold" id="totalPoints" placeholder=""/>
+
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="level" class="text-black fw-bold">Level</label>
+                    <div class="search-container">
+                        <input type="text" class="form-control fw-bold" id="level" placeholder=""/>
+                    </div>
                 </div>
             </div>
-        </div>
 
-
-        <div class="col-12">
-            <div class="form-group">
-                <label for="recentPurchaseDate" class="text-black fw-bold">Recent Purchase Date</label>
-                <div class="search-container">
-                    <input type="text" class="form-control fw-bold" id="recentPurchaseDate" placeholder=""/>
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="totalPoints" class="text-black fw-bold">Total Points</label>
+                    <div class="search-container">
+                        <input type="text" class="form-control fw-bold" id="totalPoints" placeholder=""/>
+                    </div>
                 </div>
             </div>
-        </div>
+
+
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="recentPurchaseDate" class="text-black fw-bold">Recent Purchase Date</label>
+                    <div class="search-container">
+                        <input type="text" class="form-control fw-bold" id="recentPurchaseDate" placeholder=""/>
+                    </div>
+                </div>
+            </div>
 
 
 
         </div>
+
+
 
     </div>
 </div>
