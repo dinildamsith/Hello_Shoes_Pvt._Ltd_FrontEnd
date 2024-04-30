@@ -125,7 +125,7 @@
                         <img src="../img/selctImg.png" alt="" id="selectImage" style="width: 195px; height: 195px">
                         <form action="/action_page.php" class="mt-1">
                             <input type="file" id="myFile" name="filename" class="d-none" onchange="displaySelectedImage(event)">
-                            <label for="myFile" class="btn btn-primary mt-2">Browse</label>
+                            <label for="myFile" class="btn btn-primary mt-2 col-8">Browse</label>
                         </form>
                     </div>
                 </div>
@@ -281,10 +281,28 @@
 
 
 
-
                 </div>
 
 
+            </div>
+
+            <div class="col-12 mt-1 table-responsive p-0 ">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Item Image</th>
+                        <th scope="col">Item Code</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Sale Price</th>
+                        <th scope="col">Buy Price</th>
+                        <th scope="col">Supplier Code</th>
+                    </tr>
+                    </thead>
+                    <tbody id="customer_Table">
+
+                    </tbody>
+                </table>
             </div>
 
 
