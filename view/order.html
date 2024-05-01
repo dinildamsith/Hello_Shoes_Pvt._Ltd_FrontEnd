@@ -107,7 +107,9 @@
 
         <div class="row mt-5">
 
-            <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6  mt-3">
+            <div class="row">
+
+            <div class="col-12 col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6  mt-3">
                 <div class="form-group">
                     <label for="ordrCodeTxt" class="text-black fw-bold ">Order Code</label>
                     <div class="search-container">
@@ -117,7 +119,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6  mt-3">
+            <div class="col-12 col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6  mt-3">
                 <div class="form-group">
                     <label for="purchaseDateTxt" class="text-black fw-bold ">Purchase Date</label>
                     <div class="search-container">
@@ -138,7 +140,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6  mt-3">
+            <div class="col-12 col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6  mt-3">
                 <div class="form-group">
                     <label for="customerNameTxt" class="text-black fw-bold ">Customer Name</label>
                     <div class="search-container">
@@ -161,7 +163,7 @@
             </div>
 
 
-            <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6  mt-3">
+            <div class="col-12 col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6  mt-3">
                 <div class="form-group">
                     <label for="itemDescriptionTxt" class="text-black fw-bold ">Item Description</label>
                     <div class="search-container">
@@ -171,17 +173,28 @@
                 </div>
             </div>
 
-            <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6  mt-3">
-                <div class="form-group">
-                    <label for="sizeTxt" class="text-black fw-bold ">Size</label>
-                    <div class="search-container">
-                        <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="sizeTxt" placeholder="" />
+<!--            <div class="col-12 col-xxl-2 col-xl-6 col-lg-6 col-md-6 col-sm-6  mt-3">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="sizeTxt" class="text-black fw-bold ">Size</label>-->
+<!--                    <div class="search-container">-->
+<!--                        <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="sizeTxt" placeholder="" />-->
 
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+            <div class="col-12 col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-sm-6 mt-3">
+                <div class="form-group">
+                    <label for="sizeOption" class="text-black fw-bold">Size</label>
+                    <div class="search-container">
+                        <select class="form-select border border-1 border-dark fw-bold" aria-label="Default select example" id="sizeOption">
+                            <option selected>Select Size</option>
+                        </select>
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6  mt-3">
+            <div class="col-12 col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-sm-6  mt-3">
                 <div class="form-group">
                     <label for="quantityTxt" class="text-black fw-bold ">Quantity</label>
                     <div class="search-container">
@@ -191,7 +204,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6  mt-3">
+            <div class="col-12 col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-sm-6  mt-3">
                 <div class="form-group">
                     <label for="unitPriceTxt" class="text-black fw-bold ">Unit Price</label>
                     <div class="search-container">
@@ -201,21 +214,9 @@
                 </div>
             </div>
 
-            <div class="col-12 col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 mt-3">
-                <div class="form-group">
-                    <label for="paymentMethod" class="text-black fw-bold">Payment Method</label>
-                    <div class="search-container">
-                        <select class="form-select border border-1 border-dark fw-bold" aria-label="Default select example" id="paymentMethod">
-                            <option selected>Select Method</option>
-                            <option value="CREDITCARD">CREDIT CARD</option>
-                            <option value="CASH">CASH</option>
 
-                        </select>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6  mt-3">
+            <div class="col-12 col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6  mt-3">
                 <div class="form-group">
                     <label for="orderSaleEmpIdTxt" class="text-black fw-bold ">Order Sale Employee Id</label>
                     <div class="search-container">
@@ -224,6 +225,99 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-12 col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6  mt-3">
+                <div class="form-group">
+                    <label for="empNameIdTxt" class="text-black fw-bold ">Order Sale Employee Name</label>
+                    <div class="search-container">
+                        <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="empNameIdTxt" placeholder="" />
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+                    <button type="button" class="btn btn-success col-12  col-xxl-6 col-xl-6 col-md-6 col-sm-6 col-lg-12 mt-4">Add Cart</button>
+         </div>
+
+
+            <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 mt-1 table-responsive p-0  mt-5">
+                <table class="table">
+                    <h1 class="text-center">CART</h1>
+                    <thead>
+                    <tr>
+                        <th scope="col">Item Code</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Sale Price</th>
+                        <th scope="col">Quantity</th>
+
+                    </tr>
+                    </thead>
+                    <tbody id="customer_Table">
+
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 mt-2">
+                <div class=" mt-5">
+
+                    <h1 class="text-center">Order Details</h1>
+                    <h3 class="mt-5 text-center">Total Price : <label>Rs.000.00</label></h3>
+                    <h3 class="text-center">Balance     : <label>Rs.000.00</label></h3>
+
+                </div>
+
+
+            <div class="row">
+
+                <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 mt-3 ">
+                    <div class="form-group">
+                        <label for="paymentMethod" class="text-black fw-bold">Payment Method</label>
+                        <div class="search-container">
+                            <select class="form-select border border-1 border-dark fw-bold" aria-label="Default select example" id="paymentMethod">
+                                <option selected>Select Method</option>
+                                <option value="CREDITCARD">CREDIT CARD</option>
+                                <option value="CASH">CASH</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6  mt-3">
+                    <div class="form-group">
+                        <label for="creditCardTxt" class="text-black fw-bold ">Credit Card Number</label>
+                        <div class="search-container">
+                            <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="creditCardTxt" placeholder="" />
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6  mt-3">
+                    <div class="form-group">
+                        <label for="cashTxt" class="text-black fw-bold ">Cash</label>
+                        <div class="search-container">
+                            <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="cashTxt" placeholder="" />
+
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-success col-12 mt-2">Payment Confirm</button>
+
+            </div>
+
+
+
+            </div>
+
+
+
 
         </div>
 
