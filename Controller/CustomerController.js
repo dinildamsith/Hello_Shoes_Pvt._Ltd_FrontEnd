@@ -113,3 +113,28 @@ $('#custDeleteBtn').on('click', ()=>{
     sendAJAX(jwtToken);
 
 })
+
+
+$('#customerSearchBtn').on('click', ()=>{
+    var customerId = $('#custSearchTxt').val();
+
+    const sendAJAX = (jwtToken) => {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/shoes/customer/search/"+ customerId,
+            contentType: "application/json",
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
+            },
+            success: function(data) {
+                alert("Success");
+                console.log(data)
+            },
+            error: function(xhr, status, error) {
+                alert("Failed");
+            }
+        });
+    };
+    sendAJAX(jwtToken);
+
+})
