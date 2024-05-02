@@ -1,5 +1,6 @@
 import {SignUpModel} from "../Model/SignUpModel.js";
 
+
 // User SigUp
 $("#signUpBtn").on('click', () => {
     var signUpEmail = $("#singUpEmailTxt").val();
@@ -29,3 +30,5 @@ $("#signUpBtn").on('click', () => {
 
 
 });
+
+
