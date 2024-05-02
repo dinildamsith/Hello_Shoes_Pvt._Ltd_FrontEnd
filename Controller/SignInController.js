@@ -33,10 +33,9 @@ $("#loginBtn").on('click', () => {
 // Usage:
     sendAJAX(loginDetailsJson)
         .then(token => {
-            var jwtToken = token
-            document.cookie=token
-            // Process the received data from the backend (e.g., display success message, redirect to another page, update UI elements)
+            localStorage.setItem("jwtToken",token)
             window.location.href = '../view/adminPanel.html';
+
         })
         .catch(error => {
 
