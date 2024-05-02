@@ -102,14 +102,15 @@
             <h1>Customer Service</h1>
         </div>
 
-        <div class="col-12 col-xxl-3 col-xl-3 col-lg-3 col-md-3>
+        <div class="col-12 col-xxl-3 col-xl-3 col-lg-3 col-md-3">
             <div class="form-group">
                 <div class="search-container" style="position: relative;">
-                    <input type="text" class="form-control fw-bold " id="searchTxt" placeholder=""/>
-                    <i class="fas fa-search search-icon" id="searchBtn" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);"></i>
+                    <input type="text" class="form-control fw-bold" id="searchTxt" placeholder=""/>
+                    <i class="fas fa-search search-icon" id="searchBtn" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
                 </div>
             </div>
         </div>
+
 
 
 
@@ -120,7 +121,7 @@
                 <div class="form-group">
                     <label for="customerIdTxt" class="text-black fw-bold ">Customer Code</label>
                     <div class="search-container">
-                        <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="customerIdTxt" placeholder="" disabled/>
+                        <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="customerIdTxt" placeholder="" />
 
                     </div>
                 </div>
@@ -138,18 +139,18 @@
 
             <div class="col-12 col-xxl-6 col-xl-3 col-lg-3 col-md-6 col-sm-6 mt-3">
                 <div class="form-group">
-                    <label for="contact" class="text-black fw-bold">Contact Number</label>
+                    <label for="custContactTxt" class="text-black fw-bold">Contact Number</label>
                     <div class="search-container">
-                        <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold" id="contact" placeholder=""/>
+                        <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold" id="custContactTxt" placeholder=""/>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-xxl-6 col-xl-3 col-lg-3 col-md-6 col-sm-6 mt-3">
                 <div class="form-group">
-                    <label for="email" class="text-black fw-bold">Email</label>
+                    <label for="custEmailTxt" class="text-black fw-bold">Email</label>
                     <div class="search-container">
-                        <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold" id="email" placeholder=""/>
+                        <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold" id="custEmailTxt" placeholder=""/>
                     </div>
                 </div>
             </div>
@@ -171,26 +172,26 @@
 
             <div class="col-12 col-xxl-2 col-xl-3 col-lg-3 col-md-3 col-sm-6 mt-3">
                 <div class="form-group">
-                    <label for="address1" class="text-black fw-bold">Address 1</label>
+                    <label for="custAddress1" class="text-black fw-bold">Address 1</label>
                     <div class="search-container">
-                        <input type="text" class="form-control border border-1 border-dark fw-bold" id="address1" placeholder=""/>
+                        <input type="text" class="form-control border border-1 border-dark fw-bold" id="custAddress1" placeholder=""/>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-xxl-2 col-xl-3 col-lg-3 col-md-3 col-sm-6 mt-3">
                 <div class="form-group">
-                    <label for="address2" class="text-black fw-bold">Address 2</label>
+                    <label for="custAddress2" class="text-black fw-bold">Address 2</label>
                     <div class="search-container">
-                        <input type="text" class="form-control border border-1 border-dark fw-bold" id="address2" placeholder=""/>
+                        <input type="text" class="form-control border border-1 border-dark fw-bold" id="custAddress2" placeholder=""/>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-6 mt-3">
                 <div class="form-group">
-                    <label for="birthday" class="text-black fw-bold">Birthday</label>
+                    <label for="custBirthday" class="text-black fw-bold">Birthday</label>
                     <div class="search-container">
-                        <input type="date" class="form-control border border-1 border-dark fw-bold" id="birthday" name="birthday">
+                        <input type="date" class="form-control border border-1 border-dark fw-bold" id="custBirthday" name="birthday">
                     </div>
                 </div>
             </div>
@@ -198,9 +199,9 @@
 
             <div class="col-12 col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-6 mt-3">
                 <div class="form-group">
-                    <label for="joinDate" class="text-black fw-bold">Join Date</label>
+                    <label for="custJoinDate" class="text-black fw-bold">Join Date</label>
                     <div class="search-container">
-                        <input type="date" class="form-control border border-1 border-dark fw-bold" id="joinDate" name="birthday">
+                        <input type="date" class="form-control border border-1 border-dark fw-bold" id="custJoinDate" name="birthday">
                     </div>
                 </div>
             </div>
@@ -208,9 +209,9 @@
 
             <div class="col-12 col-xxl-2 col-xl-2 col-lg-3 col-md-3 col-sm-6 mt-3">
                 <div class="form-group">
-                    <label for="level" class="text-black fw-bold">Level</label>
+                    <label for="custLevel" class="text-black fw-bold">Level</label>
                     <div class="search-container">
-                        <input type="text" class="form-control border border-1 border-dark fw-bold" id="level" placeholder="" disabled/>
+                        <input type="text" class="form-control border border-1 border-dark fw-bold" id="custLevel" placeholder="" value="BRONZE" disabled/>
                     </div>
                 </div>
             </div>
@@ -235,7 +236,7 @@
             </div>
 
             <div class=" col-11 col-xxl-6 col-xl-6 col-md-6 col-lg-12 col-lg-12 col-sm-12 d-flex justify-content-center mt-xxl-4   mt-xl-4 mt-lg-1 mt-md-4">
-                <button type="button" class="btn btn-success fw-bold col-12 mt-3">Success</button>
+                <button id="customerSaveBtn" class="btn btn-success fw-bold col-12 mt-3">Customer Save</button>
             </div>
 
             <div class=" col-11 col-xxl-6 col-xl-6 col-md-6 col-lg-12 col-sm-12 d-flex justify-content-center mt-xxl-4 mt-xl-4 mt-lg-1 mt-md-4">
@@ -279,7 +280,8 @@
     </div>
 </div>
 
-
+<script src="../bootstrap-5.3.1-dist/lib/jquery.min.js"></script>
+<script src="../Controller/CustomerController.js" type="module"></script>
 <script src="../js/mobileNavJs.js"></script>
 </body>
 </html>
