@@ -165,6 +165,27 @@ const sendAJAX = (jwtToken) => {
     });
 };
 
+//row click and get values text fields
+$("#customer_Table").on("click","tr", function (){
+    let id = $(this).find("th");
+    let data = $(this).find("td");
+
+
+
+    $("#customerIdTxt").val(id.eq(0).text());
+    $("#customerNameTxt").val(data.eq(0).text());
+    $("#custContactTxt").val(data.eq(1).text());
+    $("#custEmailTxt").val(data.eq(2).text());
+    $("#customerGenderOpation").val(data.eq(3).text());
+    $("#custAddress1").val(data.eq(4).text());
+    $("#custAddress2").val(data.eq(5).text());
+    $("#custBirthday").val(data.eq(6).text());
+    $("#custJoinDate").val(data.eq(7).text());
+    $("#custLevel").val(data.eq(8).text());
+    $("#totalPoints").val(data.eq(9).text());
+    $("#recentPurchaseDate").val(data.eq(10).text());
+});
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
