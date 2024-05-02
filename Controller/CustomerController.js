@@ -89,3 +89,27 @@ $('#custUpdateBtn').on('click', ()=>{
 
 })
 
+
+// Delete Customer
+$('#custDeleteBtn').on('click', ()=>{
+    var customerId = $('#customerIdTxt').val();
+
+    const sendAJAX = (jwtToken) => {
+        $.ajax({
+            type: "DELETE",
+            url: "http://localhost:8080/shoes/customer/delete/"+ customerId,
+            contentType: "application/json",
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
+            },
+            success: function(data) {
+                alert("Success");
+            },
+            error: function(xhr, status, error) {
+                alert("Failed");
+            }
+        });
+    };
+    sendAJAX(jwtToken);
+
+})
