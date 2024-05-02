@@ -10,7 +10,7 @@ export class CustomerModel{
         this.addressLine2 = address2;
         this.contactNumber = contact;
         this.email = mail;
-        this.point = point
+        this.totalPoints = point
         this.recentPurchaseDate = lastBuyDate
     }
 }

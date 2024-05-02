@@ -115,6 +115,7 @@ $('#custDeleteBtn').on('click', ()=>{
 })
 
 
+// Customer Search
 $('#customerSearchBtn').on('click', ()=>{
     var customerId = $('#custSearchTxt').val();
 
@@ -138,3 +139,35 @@ $('#customerSearchBtn').on('click', ()=>{
     sendAJAX(jwtToken);
 
 })
+
+// Get All Customer
+const sendAJAX = (jwtToken) => {
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/shoes/customer/getAllCustomer",
+        contentType: "application/json",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
+        },
+        success: function(data) {
+            // Iterate over each customer in the data array
+            data.forEach(customer => {
+                // Create HTML for each customer row
+                var newRow = "<tr><th scope='row'>" + customer.customerCode + "</th><td>" + customer.customerName + "</td><td>" + customer.contactNumber + "</td><td>" + customer.email + "</td><td>" + customer.customerGender + "</td><td>" + customer.addressLine1 + "</td><td>" + customer.birthDay + "</td><td>" + customer.customerJoinDate + "</td><td>" + customer.level + "</td><td>" + customer.totalPoints + "</td><td>" + customer.recentPurchaseDate  + "</td></tr>";
+                // Append the new row to the table
+                $("#customer_Table").append(newRow);
+            });
+            alert("Success");
+        },
+        error: function(xhr, status, error) {
+            alert("Failed");
+        }
+    });
+};
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const jwtToken = localStorage.getItem("jwtToken");
+    sendAJAX(jwtToken);
+});
