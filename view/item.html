@@ -122,10 +122,11 @@
                 <div class="row mt-4 justify-content-center align-items-center">
                     <div class="text-center">
                         <h5>Select Item Image</h5>
-                        <img src="../img/selctImg.png" alt="" id="selectImage" class="img-fluid">
+                        <img src="../img/selctImg.png" alt="" id="selectImage" type="file"  class="img-fluid">
                         <form action="/action_page.php" class="mt-1">
                             <!-- Remove one of the id attributes -->
                             <input type="file" name="filename" class="d-none" id="itemImageSelect" onchange="displaySelectedImage(event)">
+
                             <label for="itemImageSelect" class="btn btn-primary mt-2 col-8">Browse</label>
                         </form>
                     </div>
@@ -166,7 +167,7 @@
                         <div class="form-group">
                             <label for="itemCategory" class="text-black fw-bold">Category</label>
                             <div class="search-container">
-                                <select class="form-select border border-1 border-dark fw-bold" aria-label="Default select example" id="itemCategory">
+                                <select class="form-select border border-1 border-dark fw-bold" type="text" aria-label="Default select example" id="itemCategory">
                                     <option selected>Select Category</option>
                                     <option value="NATIONAL">NATIONAL</option>
                                     <option value="INTERNATIONAL">INTERNATIONAL</option>
@@ -229,7 +230,7 @@
                         <div class="form-group">
                             <label for="supplierCodeOption" class="text-black fw-bold">Supplier Code</label>
                             <div class="search-container">
-                                <select class="form-select border border-1 border-dark fw-bold" aria-label="Default select example" id="supplierCodeOption">
+                                <select class="form-select border border-1 border-dark fw-bold" type="text" aria-label="Default select example" id="supplierCodeOption">
                                     <option>Select Supplier Code</option>
                                 </select>
                             </div>
@@ -253,7 +254,7 @@
                         <div class="form-group">
                             <label for="profitMarginTxt" class="text-black fw-bold ">Profit Margin</label>
                             <div class="search-container">
-                                <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="profitMarginTxt" placeholder="" />
+                                <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="profitMarginTxt" placeholder="" disabled/>
 
                             </div>
                         </div>
@@ -263,7 +264,7 @@
                         <div class="form-group">
                             <label for="statusTxt" class="text-black fw-bold ">Status</label>
                             <div class="search-container">
-                                <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="statusTxt" placeholder="" />
+                                <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="statusTxt" placeholder="" disabled/>
 
                             </div>
                         </div>
