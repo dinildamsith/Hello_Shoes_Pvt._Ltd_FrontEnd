@@ -1,16 +1,15 @@
-export class ItemModel{
-    constructor(id,desc,pic,category,salePrice,expectedProfit,status,buyPrice,size,qty,profitMargin) {
-        this.itemCode = id;
-        this.itemDesc = desc;
-        this.item_pic = pic;
-        this.category = category;
-        this.unitPriceSale = salePrice;
-        this.expectedProfit= expectedProfit;
+export class ItemModel {
+    constructor(itemCode, itemDesc, itemPic, Category, unitPriceSale, expectedProfit, profitMargin, status, buyPrice, supplierEntityList, stockEntityList) {
+        this.itemCode = itemCode;
+        this.itemDesc = itemDesc;
+        this.itemPic = itemPic;
+        this.category = Category;
+        this.unitPriceSale = unitPriceSale;
+        this.expectedProfit = expectedProfit;
         this.profitMargin = profitMargin;
+        this.status = status;
         this.buyPrice = buyPrice;
-        this.itemSize = size;
-        this.qty = qty
-
-
+        this.supplierEntityList =  supplierEntityList;
+        this.stockEntityList = stockEntityList;
     }
 }

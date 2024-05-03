@@ -1,4 +1,6 @@
 import {ItemModel} from "../Model/ItemModel.js";
+import {SupplierModel} from "../Model/SupplierModel.js";
+import {StockModel} from "../Model/StockModel.js";
 
 
 var jwtToken = localStorage.getItem("jwtToken")
@@ -163,6 +165,49 @@ $('#itemDeleteBtn').on('click', ()=>{
 
 })
 
+// Item Search
+$('#itemSearchBtn').on('click', ()=>{
+    var  itemId = $('#itemSearchTxt').val();
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/shoes/item/search/"+itemId,
+        contentType: "application/json",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
+        },
+        success: function(data) {
+            console.log(data.itemCode)
+            console.log(data.stockEntityList)
+            $('#itemIdTxt').val(data.itemCode);
+            $('#itemDescTxt').val(data.itemDesc);
+            $('#itemCategory').val(data.category);
+            $('#sizeTxt').val(data.stockEntityList[0].itemSize);
+            $('#quantityTxt').val(data.stockEntityList[0].qty);
+            $('#salePriceTxt').val(data.unitPriceSale);
+            $('#buyPriceTxt').val(data.buyPrice);
+            $('#supplierCodeOption').val(data.supplierEntityList[0].supplierCode);
+            $('#expectedProfitTxt').val(data.expectedProfit);
+            $('#statusTxt').val(data.status);
+            $('#profitMarginTxt').val(data.profitMargin);
+            // // $('#selectImage').val(data.itemPic);
+            // // console.log(data.itemPic)
+            // // Assuming you have a Base64 encoded image string
+            // const base64String = "data:image/png;base64," + data.itemPic;
+            // const img = document.getElementById('selectImage'); // Get the existing <img> element by ID
+            // img.src = base64String; // Set the src attribute of the <img> element to the Base64 string
+
+
+        },
+        error: function(xhr, status, error) {
+            alert("Failed");
+        }
+    });
+
+})
+
+
+
 //item Table Set Data
 const getAllItemsSendAJAX = (jwtToken) => {
     $.ajax({
@@ -174,8 +219,7 @@ const getAllItemsSendAJAX = (jwtToken) => {
         },
         success: function(data) {
             data.forEach(items => {
-                console.log(items)
-                var newRow = "<tr><th scope='row'>" + items.itemCode + "</th><td>" + items.itemDesc + "</td><td>" + items.category + "</td><td>" + items.unitPriceSale + "</td><td>" + items.buyPrice + "</td><td>" +  +  "</td></tr>";
+                var newRow = "<tr><th scope='row'>" + items.itemCode + "</th><td>" + items.itemDesc + "</td><td>" + items.category + "</td><td>" + items.unitPriceSale + "</td><td>" + items.buyPrice + "</td><td>" + items.supplierEntityList[0].supplierCode +  "</td></tr>";
                 $("#item_Table").append(newRow);
             });
 
