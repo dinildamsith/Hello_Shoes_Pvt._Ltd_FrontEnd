@@ -87,6 +87,8 @@ $('#itemBuyBtn').on('click', ()=>{
                 xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
             },
             success: function(data) {
+                $("#item_Table").empty();
+                getAllItemSetTabelSendAJAX(jwtToken)
                 alert("Success");
             },
             error: function(xhr, status, error) {
@@ -131,6 +133,8 @@ $('#itemUpdateBtn').on('click', ()=>{
                 xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
             },
             success: function(data) {
+                $("#item_Table").empty();
+                getAllItemSetTabelSendAJAX(jwtToken)
                 alert("Success");
             },
             error: function(xhr, status, error) {
@@ -154,6 +158,8 @@ $('#itemDeleteBtn').on('click', ()=>{
                         xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
                     },
                     success: function(data) {
+                        $("#item_Table").empty();
+                        getAllItemSetTabelSendAJAX(jwtToken)
                         alert("Success");
                     },
                     error: function(xhr, status, error) {
@@ -209,7 +215,7 @@ $('#itemSearchBtn').on('click', ()=>{
 
 
 //item Table Set Data
-const getAllItemsSendAJAX = (jwtToken) => {
+const getAllItemSetTabelSendAJAX = (jwtToken) => {
     $.ajax({
         type: "GET",
         url: "http://localhost:8080/shoes/item/allItems",
@@ -232,5 +238,5 @@ const getAllItemsSendAJAX = (jwtToken) => {
 
 document.addEventListener('DOMContentLoaded', function() {
     const jwtToken = localStorage.getItem("jwtToken");
-    getAllItemsSendAJAX(jwtToken)
+    getAllItemSetTabelSendAJAX(jwtToken)
 });
