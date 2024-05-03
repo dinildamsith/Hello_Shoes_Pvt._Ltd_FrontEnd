@@ -141,7 +141,7 @@ $('#customerSearchBtn').on('click', ()=>{
 })
 
 // Get All Customer
-const sendAJAX = (jwtToken) => {
+const getAllCustomerSendAJAX = (jwtToken) => {
     $.ajax({
         type: "GET",
         url: "http://localhost:8080/shoes/customer/getAllCustomer",
@@ -150,14 +150,12 @@ const sendAJAX = (jwtToken) => {
             xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
         },
         success: function(data) {
-            // Iterate over each customer in the data array
+            console.log(data)
             data.forEach(customer => {
-                // Create HTML for each customer row
-                var newRow = "<tr><th scope='row'>" + customer.customerCode + "</th><td>" + customer.customerName + "</td><td>" + customer.contactNumber + "</td><td>" + customer.email + "</td><td>" + customer.customerGender + "</td><td>" + customer.addressLine1 + "</td><td>" + customer.birthDay + "</td><td>" + customer.customerJoinDate + "</td><td>" + customer.level + "</td><td>" + customer.totalPoints + "</td><td>" + customer.recentPurchaseDate  + "</td></tr>";
-                // Append the new row to the table
+                var newRow = "<tr><th scope='row'>" + customer.customerCode + "</th><td>" + customer.customerName + "</td><td>" + customer.contactNumber + "</td><td>" + customer.email + "</td><td>" + customer.customerGender + "</td><td>" + customer.addressLine1 + "</td><td>" + customer.addressLine2 + "</td><td>" + customer.birthDay + "</td><td>" + customer.customerJoinDate + "</td><td>" + customer.level + "</td><td>" + customer.totalPoints + "</td><td>" + customer.recentPurchaseDate  + "</td></tr>";
                 $("#customer_Table").append(newRow);
             });
-            alert("Success");
+
         },
         error: function(xhr, status, error) {
             alert("Failed");
@@ -169,8 +167,6 @@ const sendAJAX = (jwtToken) => {
 $("#customer_Table").on("click","tr", function (){
     let id = $(this).find("th");
     let data = $(this).find("td");
-
-
 
     $("#customerIdTxt").val(id.eq(0).text());
     $("#customerNameTxt").val(data.eq(0).text());
@@ -184,11 +180,12 @@ $("#customer_Table").on("click","tr", function (){
     $("#custLevel").val(data.eq(8).text());
     $("#totalPoints").val(data.eq(9).text());
     $("#recentPurchaseDate").val(data.eq(10).text());
+
 });
 
 
 
 document.addEventListener('DOMContentLoaded', function() {
     const jwtToken = localStorage.getItem("jwtToken");
-    sendAJAX(jwtToken);
+    getAllCustomerSendAJAX(jwtToken)
 });
