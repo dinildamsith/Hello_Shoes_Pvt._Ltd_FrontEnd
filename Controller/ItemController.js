@@ -150,7 +150,6 @@ $('#itemDeleteBtn').on('click', ()=>{
             type: "POST",
             url : "http://localhost:8080/shoes/item/delete/" + itemId,
             processData: false,
-            mimeType: "multipart/form-data",
             contentType: false,
             beforeSend: function(xhr) {
                 xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
