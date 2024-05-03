@@ -140,3 +140,28 @@ $('#itemUpdateBtn').on('click', ()=>{
 })
 
 
+// Item Delete
+$('#itemDeleteBtn').on('click', ()=>{
+    var  itemId = $('#itemIdTxt').val();
+
+
+    const sendAJAX = (jwtToken) => {
+        $.ajax({
+            type: "POST",
+            url : "http://localhost:8080/shoes/item/delete/" + itemId,
+            processData: false,
+            mimeType: "multipart/form-data",
+            contentType: false,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
+            },
+            success: function(data) {
+                alert("Success");
+            },
+            error: function(xhr, status, error) {
+                alert("Failed");
+            }
+        });
+    };
+    sendAJAX(jwtToken);
+})
