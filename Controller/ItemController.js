@@ -1,5 +1,6 @@
 import {ItemModel} from "../Model/ItemModel.js";
 
+
 var jwtToken = localStorage.getItem("jwtToken")
 document.getElementById('itemImageSelect').addEventListener('change', displaySelectedImage);
 document.addEventListener('DOMContentLoaded', function() {
@@ -19,7 +20,6 @@ const getSuppliersIds = (jwtToken) => {
             xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
         },
         success: function(data) {
-                console.log(data);
                 var selectElement = $('#supplierCodeOption');
                 data.forEach(supplier => {
                     selectElement.append(`<option value="${supplier.supplierCode}">${supplier.supplierCode}</option>`);
@@ -162,3 +162,31 @@ $('#itemDeleteBtn').on('click', ()=>{
             sendAJAX(jwtToken);
 
 })
+
+//item Table Set Data
+const getAllItemsSendAJAX = (jwtToken) => {
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/shoes/item/allItems",
+        contentType: "application/json",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
+        },
+        success: function(data) {
+            data.forEach(items => {
+                console.log(items)
+                var newRow = "<tr><th scope='row'>" + items.itemCode + "</th><td>" + items.itemDesc + "</td><td>" + items.category + "</td><td>" + items.unitPriceSale + "</td><td>" + items.buyPrice + "</td><td>" +  +  "</td></tr>";
+                $("#item_Table").append(newRow);
+            });
+
+        },
+        error: function(xhr, status, error) {
+            alert("Failed");
+        }
+    });
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    const jwtToken = localStorage.getItem("jwtToken");
+    getAllItemsSendAJAX(jwtToken)
+});
