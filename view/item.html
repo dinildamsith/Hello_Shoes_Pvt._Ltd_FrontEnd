@@ -118,18 +118,20 @@
         <div class="row mt-5">
 
 
-            <div class="col-3 col-xl-3 col-lg-3 ">
+            <div class="col-3 col-xl-3 col-lg-3">
                 <div class="row mt-4 justify-content-center align-items-center">
                     <div class="text-center">
                         <h5>Select Item Image</h5>
-                        <img src="../img/selctImg.png" alt="" id="selectImage" class="img-fluid" >
+                        <img src="../img/selctImg.png" alt="" id="selectImage" class="img-fluid">
                         <form action="/action_page.php" class="mt-1">
-                            <input type="file" id="myFile" name="filename" class="d-none" onchange="displaySelectedImage(event)">
-                            <label for="myFile" class="btn btn-primary mt-2 col-8">Browse</label>
+                            <!-- Remove one of the id attributes -->
+                            <input type="file" name="filename" class="d-none" id="itemImageSelect" onchange="displaySelectedImage(event)">
+                            <label for="itemImageSelect" class="btn btn-primary mt-2 col-8">Browse</label>
                         </form>
                     </div>
                 </div>
             </div>
+
 
 
 
@@ -162,9 +164,9 @@
 
                     <div class="col-12 col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 mt-3">
                         <div class="form-group">
-                            <label for="category" class="text-black fw-bold">Category</label>
+                            <label for="itemCategory" class="text-black fw-bold">Category</label>
                             <div class="search-container">
-                                <select class="form-select border border-1 border-dark fw-bold" aria-label="Default select example" id="category">
+                                <select class="form-select border border-1 border-dark fw-bold" aria-label="Default select example" id="itemCategory">
                                     <option selected>Select Category</option>
                                     <option value="NATIONAL">NATIONAL</option>
                                     <option value="INTERNATIONAL">INTERNATIONAL</option>
@@ -225,10 +227,10 @@
 
                     <div class="col-12 col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6 mt-3">
                         <div class="form-group">
-                            <label for="category" class="text-black fw-bold">Supplier Code</label>
+                            <label for="supplierCodeOption" class="text-black fw-bold">Supplier Code</label>
                             <div class="search-container">
                                 <select class="form-select border border-1 border-dark fw-bold" aria-label="Default select example" id="supplierCodeOption">
-                                    <option selected>Select Supplier Code</option>
+                                    <option>Select Supplier Code</option>
                                 </select>
                             </div>
                         </div>
@@ -268,7 +270,7 @@
                     </div>
 
                     <div class="col-12 col-xxl-12 col-xl-6 d-flex justify-content-center mt-4 mt-xxl-4 mt-xl-4 mt-lg-4 mt-md-4 mt-sm-4  ">
-                        <button type="button" class="btn btn-success fw-bold col-12 ">Buy Item</button>
+                        <button type="button" class="btn btn-success fw-bold col-12 " id="itemBuyBtn">Buy Item</button>
                     </div>
 
                     <div class="col-12 col-xxl-12 col-xl-6 d-flex justify-content-center mt-4 mt-xxl-4 mt-xl-4 mt-lg-4 mt-md-4 mt-sm-4">
@@ -334,5 +336,7 @@
         }
     }
 </script>
+<script src="../bootstrap-5.3.1-dist/lib/jquery.min.js"></script>
+<script src="../Controller/ItemController.js" type="module"></script>
 </body>
 </html>
