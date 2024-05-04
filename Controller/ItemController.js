@@ -236,6 +236,50 @@ const getAllItemSetTabelSendAJAX = (jwtToken) => {
     });
 };
 
+var itemTypeElement = document.getElementById("itemTypeOpation");
+var occasionElement = document.getElementById("occasionOpation");
+var veritiesElement = document.getElementById("veritiesOpation");
+
+
+itemTypeElement.addEventListener("change", handleChange);
+occasionElement.addEventListener("change", handleChange);
+veritiesElement.addEventListener("change", handleChange);
+
+function handleChange() {
+
+
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/shoes/item/lastId",
+        contentType: "application/json",
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+        },
+        success: function (data) {
+            let incrementedId = parseInt(data, 10) + 1;
+            var id = incrementedId.toString().padStart(data.length, '0');
+            var createItemId = idFirstLetters+id
+            $('#itemIdTxt').val(createItemId);
+        },
+        error: function (xhr, status, error) {
+            alert("Failed");
+        }
+    });
+
+
+    var itemType = itemTypeElement.value;
+    var occasionType = occasionElement.value;
+    var veritiesType = veritiesElement.value;
+
+    var idFirstLetters =occasionType+veritiesType+itemType
+
+}
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const jwtToken = localStorage.getItem("jwtToken");
     getAllItemSetTabelSendAJAX(jwtToken)
