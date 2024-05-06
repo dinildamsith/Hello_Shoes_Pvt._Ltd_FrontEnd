@@ -110,10 +110,10 @@
         <div class="row mt-4 justify-content-center align-items-center">
           <div class="text-center">
             <h5>Select Employee Image</h5>
-            <img src="../img/selectEmp.png" alt="" id="selectImage" class="img-fluid" >
+            <img src="../img/selectEmp.png" alt="" id="selectEmpImage" class="img-fluid" >
             <form action="/action_page.php" class="mt-1">
-              <input type="file" id="myFile" name="filename" class="d-none" onchange="displaySelectedImage(event)">
-              <label for="myFile" class="btn btn-primary mt-2 col-8">Browse</label>
+              <input type="file" id="empSelectImage" name="filename" class="d-none" onchange="displaySelectedImage(event)">
+              <label for="empSelectImage" class="btn btn-primary mt-2 col-8">Browse</label>
             </form>
           </div>
         </div>
@@ -353,7 +353,7 @@
 
 <script>
   function displaySelectedImage(event) {
-    const selectImage = document.getElementById('selectImage');
+    const selectImage = document.getElementById('selectEmpImage');
     const file = event.target.files[0];
     const reader = new FileReader();
 
