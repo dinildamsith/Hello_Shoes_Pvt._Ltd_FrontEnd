@@ -35,6 +35,8 @@ $('#customerSaveBtn').on('click', ()=>{
                 xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
             },
             success: function(data) {
+                $("#customer_Table").empty();
+                getAllCustomerSendAJAX(jwtToken)
                 alert("Success");
             },
             error: function(xhr, status, error) {
@@ -78,6 +80,8 @@ $('#custUpdateBtn').on('click', ()=>{
                 xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
             },
             success: function(data) {
+                $("#customer_Table").empty();
+                getAllCustomerSendAJAX(jwtToken)
                 alert("Success");
             },
             error: function(xhr, status, error) {
@@ -103,6 +107,8 @@ $('#custDeleteBtn').on('click', ()=>{
                 xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
             },
             success: function(data) {
+                $("#customer_Table").empty();
+                getAllCustomerSendAJAX(jwtToken)
                 alert("Success");
             },
             error: function(xhr, status, error) {
