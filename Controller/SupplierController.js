@@ -37,6 +37,42 @@ $('#supplierSaveBtn').on('click', ()=>{
 
 })
 
+// update Employee
+$('#supplierUpdateBtn').on('click', ()=>{
+
+    var updateSupplierCode = $('#supplierCodeTxt').val();
+
+    var supplierName = $('#supplierNameTxt').val();
+    var category = $('#supCategoryOption').val();
+    var address1 = $('#address1Txt').val();
+    var address2 = $('#address2Txt').val();
+    var address3 = $('#address3Txt').val();
+    var contact1 = $('#contact1Txt').val();
+    var contact2 = $('#contact2Txt').val();
+    var mail = $('#mailTxt').val();
+
+    var  supplierDetails = new SupplierModel(supplierName,category,address1,address2,address3,contact1,contact2,mail);
+    var supplierDetailsJson = JSON.stringify(supplierDetails);
+
+    $.ajax({
+        type: "PUT",
+        url: "http://localhost:8080/shoes/supplier/update/"+updateSupplierCode,
+        contentType: "application/json",
+        data: supplierDetailsJson,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+        },
+        success: function(data) {
+            $('#supplier_Table').empty();
+            getAllSupplier();
+            alert("Success");
+        },
+        error: function(xhr, status, error) {
+            alert("Failed");
+        }
+    });
+
+})
 
 
 
