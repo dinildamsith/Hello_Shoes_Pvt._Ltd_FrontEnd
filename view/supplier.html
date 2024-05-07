@@ -35,7 +35,7 @@
         <div class="col mt-5 text-center">
             <a href="../view/adminPanel.html">
                 <button class="btn btn-lg btnCss text-white">
-                    <img src="../img/admin-panel.png" alt="" class="btnImageCss ml-5">
+                    <img src="../img/ap.png" alt="" class="btnImageCss ">
                     Dash Board
                 </button>
             </a>
@@ -44,7 +44,7 @@
         <div class="col mt-2 text-center">
             <a href="../view/customerPage.html">
                 <button class="btn  btn-lg btnCss text-white">
-                    <img src="../img/customers.png" alt="" class="btnImageCss">
+                    <img src="../img/cus.png" alt="" class="btnImageCss">
                     Customers
                 </button>
             </a>
@@ -53,7 +53,7 @@
         <div class="col mt-2 text-center">
             <a href="../view/item.html">
                 <button class="btn  btn-lg btnCss text-white">
-                    <img src="../img/items.png" alt="" class="btnImageCss">
+                    <img src="../img/sh.png" alt="" class="btnImageCss">
                     Inventory
                 </button>
             </a>
@@ -62,7 +62,7 @@
         <div class="col mt-2 text-center">
             <a href="../view/order.html">
                 <button class="btn  btn-lg btnCss text-white">
-                    <img src="../img/sales.png" alt="" class="btnImageCss saleImage">
+                    <img src="../img/buy.png" alt="" class="btnImageCss saleImage">
                     Sale
                 </button>
             </a>
@@ -71,7 +71,7 @@
         <div class="col mt-2 text-center">
             <a href="../view/supplier.html">
                 <button class="btn  btn-lg btnCss text-white">
-                    <img src="../img/supplier.png" alt="" class="btnImageCss">
+                    <img src="../img/sup.png" alt="" class="btnImageCss">
                     Suppliers
                 </button>
             </a>
@@ -80,7 +80,7 @@
         <div class="col mt-2 text-center">
             <a href="../view/employee.html">
                 <button class="btn  btn-lg btnCss text-white">
-                    <img src="../img/employees.png" alt="" class="btnImageCss">
+                    <img src="../img/emp.png" alt="" class="btnImageCss">
                     Employees
                 </button>
             </a>
@@ -99,19 +99,28 @@
 
     <div class="row">
 
-        <div class="col-12">
+        <div class="col-12 col-xxl-9 col-xl-9 col-lg-9 col-md-9">
             <h1>Supplier Service</h1>
         </div>
 
+        <div class="col-12 col-xxl-3 col-xl-3 col-lg-3 col-md-3">
+            <div class="form-group">
+                <div class="search-container" style="position: relative;">
+                    <input type="text" class="form-control fw-bold " id="itemSearchTxt" placeholder=""/>
+                    <i class="fas fa-search search-icon" id="itemSearchBtn" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);"></i>
+                </div>
+            </div>
+        </div>
 
-        <div class="row mt-5">
+
+        <div class="row mt-5 rowColur">
 
 
             <div class="col-12 col-xxl-2 col-xl-2 col-lg-3 col-md-6 col-sm-6  mt-3">
                 <div class="form-group">
                     <label for="supplierCodeTxt" class="text-black fw-bold ">Supplier  Code</label>
                     <div class="search-container">
-                        <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="supplierCodeTxt" placeholder="" />
+                        <input type="text" class="form-control fw-bold border border-1  fw-bold " id="supplierCodeTxt" placeholder="" />
 
                     </div>
                 </div>
@@ -121,7 +130,7 @@
                 <div class="form-group">
                     <label for="supplierNameTxt" class="text-black fw-bold ">Supplier  Name</label>
                     <div class="search-container">
-                        <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="supplierNameTxt" placeholder="" />
+                        <input type="text" class="form-control fw-bold border border-1  fw-bold " id="supplierNameTxt" placeholder="" />
 
                     </div>
                 </div>
@@ -131,7 +140,7 @@
                 <div class="form-group">
                     <label for="supCategoryOption" class="text-black fw-bold">Category</label>
                     <div class="search-container">
-                        <select class="form-select border border-1 border-dark fw-bold" aria-label="Default select example" id="supCategoryOption">
+                        <select class="form-select border border-1  fw-bold" aria-label="Default select example" id="supCategoryOption">
                             <option selected>Select Category</option>
                             <option selected value="NATIONAL">NATIONAL</option>
                             <option selected value="INTERNATIONAL">INTERNATIONAL</option>
@@ -144,7 +153,7 @@
                 <div class="form-group">
                     <label for="address1Txt" class="text-black fw-bold ">Address 1</label>
                     <div class="search-container">
-                        <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="address1Txt" placeholder="" />
+                        <input type="text" class="form-control fw-bold border border-1  fw-bold " id="address1Txt" placeholder="" />
 
                     </div>
                 </div>
@@ -154,7 +163,7 @@
                 <div class="form-group">
                     <label for="address2Txt" class="text-black fw-bold ">Address 2</label>
                     <div class="search-container">
-                        <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="address2Txt" placeholder="" />
+                        <input type="text" class="form-control fw-bold border border-1  fw-bold " id="address2Txt" placeholder="" />
 
                     </div>
                 </div>
@@ -164,7 +173,7 @@
                 <div class="form-group">
                     <label for="address3Txt" class="text-black fw-bold ">Address 3</label>
                     <div class="search-container">
-                        <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="address3Txt" placeholder="" />
+                        <input type="text" class="form-control fw-bold border border-1  fw-bold " id="address3Txt" placeholder="" />
 
                     </div>
                 </div>
@@ -174,7 +183,7 @@
                 <div class="form-group">
                     <label for="contact1Txt" class="text-black fw-bold ">Contact 1</label>
                     <div class="search-container">
-                        <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="contact1Txt" placeholder="" />
+                        <input type="text" class="form-control fw-bold border border-1 fw-bold " id="contact1Txt" placeholder="" />
 
                     </div>
                 </div>
@@ -184,7 +193,7 @@
                 <div class="form-group">
                     <label for="contact2Txt" class="text-black fw-bold ">Contact 2</label>
                     <div class="search-container">
-                        <input type="text" class="form-control fw-bold border border-1 border-dark fw-bold " id="contact2Txt" placeholder="" />
+                        <input type="text" class="form-control fw-bold border border-1  fw-bold " id="contact2Txt" placeholder="" />
 
                     </div>
                 </div>
@@ -194,7 +203,7 @@
                 <div class="form-group">
                     <label for="mailTxt" class="text-black fw-bold ">Mail</label>
                     <div class="search-container">
-                        <input type="email" class="form-control fw-bold border border-1 border-dark fw-bold " id="mailTxt" placeholder="" />
+                        <input type="email" class="form-control fw-bold border border-1  fw-bold " id="mailTxt" placeholder="" />
 
                     </div>
                 </div>
@@ -214,30 +223,32 @@
 
 
 
+            <div class="col-12   mt-1 table-responsive p-0  mt-5">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Supplier Code</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Address 1</th>
+                        <th scope="col">Address 2</th>
+                        <th scope="col">Address 3</th>
+                        <th scope="col">Contact 1</th>
+                        <th scope="col">Contact 2</th>
+                        <th scope="col">Mail</th>
+    
+                    </tr>
+                    </thead>
+                    <tbody id="supplier_Table">
+    
+                    </tbody>
+                </table>
+            </div>
+
         </div>
 
 
-        <div class="col-12   mt-1 table-responsive p-0  mt-5">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Supplier Code</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Address 1</th>
-                    <th scope="col">Address 2</th>
-                    <th scope="col">Address 3</th>
-                    <th scope="col">Contact 1</th>
-                    <th scope="col">Contact 2</th>
-                    <th scope="col">Mail</th>
 
-                </tr>
-                </thead>
-                <tbody id="supplier_Table">
-
-                </tbody>
-            </table>
-        </div>
 
 
     </div>

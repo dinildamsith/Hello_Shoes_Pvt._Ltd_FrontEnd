@@ -1,11 +1,12 @@
 
 .sidenav {
-    height: 100%;
+    height: 98%;
     width: 0;
     position: fixed;
     z-index: 1;
-    top: 0;
-    left: 0;
+    top: 1%;
+    border-radius: 20px;
+    left: 0.3%;
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
@@ -46,14 +47,20 @@ body {
 
 .btnCss{
     color: black;
-    font-size: 21px;
+    font-size: 18px;
     font-weight: bold;
     width: 236px;
-    height: 77px;
+    height: 64px;
 
 }
 
 .btnImageCss {
+    width: 30px;
+    height: 30px;
+    margin-right: 26px; /* Adjust the spacing between the image and text as needed */
+    vertical-align: middle; /* Align the image vertically with the text */
+}
+.dashbordImagecss {
     width: 63px;
     height: 58px;
     margin-right: 26px; /* Adjust the spacing between the image and text as needed */
@@ -70,9 +77,15 @@ body {
 
 .dashBordSet{
    position: absolute;
-   left: 257px;
-   width: calc(100% - 250px);
+   left: 280px;
+   width: calc(100% - 280px);
 
+}
+
+.rowColur{
+    background-color: #D5DBDB;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
 
 
