@@ -21,6 +21,33 @@ const getAllCustomerSendAJAX = () => {
     });
 };
 
+// Select Customer Name Set Text Field
+$('#customerCodeOption').change(function() {
+
+    var selectCustomerId = $('#customerCodeOption').val()
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/shoes/customer/search/"+ selectCustomerId,
+        contentType: "application/json",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+        },
+        success: function(data) {
+           $('#customerNameTxt').val(data.customerName)
+        },
+        error: function(xhr, status, error) {
+            alert("Failed");
+        }
+    });
+
+});
+
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     getAllCustomerSendAJAX()
 });
