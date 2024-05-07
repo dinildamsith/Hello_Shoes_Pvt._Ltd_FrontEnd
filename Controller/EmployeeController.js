@@ -84,6 +84,45 @@ $('#employeeSaveBtn').on('click', ()=>{
 
 })
 
+
+// Search Employee
+$('#employeeSearchBtn').on('click', ()=>{
+    var searchEmpId = $('#employeeSearchTxt').val();
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/shoes/employee/search/"+searchEmpId,
+        contentType: "application/json",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+        },
+        success: function(data) {
+
+                 $('#employeeCodeTxt').val(data.employeeCode);
+                 $('#employeeNameTxt').val(data.employeeName);
+                 $('#employeeGenderOption').val(data.gender);
+                 $('#empStatusOption').val(data.status);
+                 $('#designationTxt').val(data.designation);
+                 $('#roleOption').val(data.role);
+                 $('#empBirthday').val(data.birthDay);
+                 $('#empJoinDate').val(data.joinDate);
+                 $('#branchOption').val(data.attachedBranch);
+                 $('#address1Txt').val(data.address1);
+                 $('#address2Txt').val(data.address2);
+                 $('#address3Txt').val(data.address3);
+                 $('#contactTxt').val(data.contact);
+                 $('#mailTxt').val(data.email);
+                 $('#guardiaNameTxt').val(data.guardianName);
+                 $('#emgContactTxt').val(data.emergencyContact);
+
+        },
+        error: function(xhr, status, error) {
+            alert("Failed");
+        }
+    });
+})
+
+
 // Get All employees and employee table set data
 const getAllEmployees = () => {
     $.ajax({
