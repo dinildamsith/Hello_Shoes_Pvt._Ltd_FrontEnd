@@ -17,6 +17,7 @@ function displaySelectedImage(event) {
     image =selectedFile;
 }
 
+// Save Employee
 $('#employeeSaveBtn').on('click', ()=>{
 
     var empCode = $('#employeeCodeTxt').val();
