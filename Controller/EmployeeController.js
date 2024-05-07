@@ -123,13 +123,81 @@ $('#employeeSearchBtn').on('click', ()=>{
     });
 })
 
+// Update Employee
+$('#employeeUpdateBtn').on('click', ()=>{
+
+    var updateEmpCode = $('#employeeCodeTxt').val();
+
+    var empName = $('#employeeNameTxt').val();
+    var gender = $('#employeeGenderOption').val();
+    var status = $('#empStatusOption').val();
+    var designation = $('#designationTxt').val();
+    var role = $('#roleOption').val();
+    var dob = $('#empBirthday').val();
+    var jd = $('#empJoinDate').val();
+    var branch = $('#branchOption').val();
+    var addr1 = $('#address1Txt').val();
+    var addr2 = $('#address2Txt').val();
+    var addr3 = $('#address3Txt').val();
+    var contact = $('#contactTxt').val();
+    var mail = $('#mailTxt').val();
+    var gn = $('#guardiaNameTxt').val();
+    var emrCont = $('#emgContactTxt').val();
+
+
+    var form = new FormData();
+
+    form.append("employee_name", empName);
+    form.append("employee_pic", image);
+    form.append("gender", gender);
+    form.append("status", status);
+    form.append("designation", designation);
+    form.append("role", role);
+    form.append("birthday", dob);
+    form.append("joinDate", jd);
+    form.append("attachedBranch", branch);
+    form.append("address1", addr1);
+    form.append("address2", addr2);
+    form.append("address3", addr3);
+    form.append("address4", "dd");
+    form.append("address5", "dd");
+    form.append("contact", contact);
+    form.append("email", mail);
+    form.append("guardiaName", gn);
+    form.append("emergencyContact", emrCont);
+
+    const sendAJAX = (empDetails,jwtToken) => {
+        $.ajax({
+            method: "PUT",
+            url : "http://localhost:8080/shoes/employee/update/"+ updateEmpCode,
+            processData: false,
+            mimeType: "multipart/form-data",
+            contentType: false,
+            data: form,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
+            },
+            success: function(data) {
+                $("#employee_Table").empty();
+                getAllEmployees()
+                alert("Success");
+            },
+            error: function(xhr, status, error) {
+                alert("Failed");
+            }
+        });
+    };
+    sendAJAX(form, localStorage.getItem("jwtToken"));
+
+})
+
 // Delete Employee
 $('#employeeDeleteBtn').on('click',()=>{
     var deleteEmpId = $('#employeeSearchTxt').val();
     var deleteEmpMail = $('#mailTxt').val();
 
     $.ajax({
-        type: "POST",
+        type: "DELETE",
         url: "http://localhost:8080/shoes/employee/delete/"+ deleteEmpMail +"/"+deleteEmpId,
         contentType: "application/json",
         beforeSend: function(xhr) {
