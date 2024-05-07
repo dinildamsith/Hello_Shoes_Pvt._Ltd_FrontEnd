@@ -123,7 +123,7 @@ $('#itemUpdateBtn').on('click', ()=>{
 
     const sendAJAX = (itemDetails,jwtToken) => {
         $.ajax({
-            type: "POST",
+            type: "PUT",
             url : "http://localhost:8080/shoes/item/update/" + itemId + "/" + supId,
             processData: false,
             mimeType: "multipart/form-data",
@@ -152,7 +152,7 @@ $('#itemDeleteBtn').on('click', ()=>{
 
             const sendAJAX = (jwtToken) => {
                 $.ajax({
-                    type: "POST",
+                    type: "DELETE",
                     url: "http://localhost:8080/shoes/item/delete/"+ itemId,
                     beforeSend: function(xhr) {
                         xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
