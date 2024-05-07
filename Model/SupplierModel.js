@@ -1,5 +1,5 @@
 export class SupplierModel{
-    constructor(id,name,category,address1,address2,address3,contact1,contact2,mail) {
+    constructor(id,name,category,address1,address2,address3,contact1,contact2,mail,itemEntityList) {
         this.supplierCode = id;
         this.supplierName = name;
         this.category = category;
@@ -9,6 +9,7 @@ export class SupplierModel{
         this.contact1 = contact1;
         this.contact2 = contact2;
         this.email = mail;
+        this.itemEntityList = itemEntityList;
 
     }
 }
