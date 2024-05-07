@@ -19,7 +19,6 @@ function displaySelectedImage(event) {
 
 $('#employeeSaveBtn').on('click', ()=>{
 
-
     var empCode = $('#employeeCodeTxt').val();
     var empName = $('#employeeNameTxt').val();
     var gender = $('#employeeGenderOption').val();
@@ -36,7 +35,6 @@ $('#employeeSaveBtn').on('click', ()=>{
     var mail = $('#mailTxt').val();
     var gn = $('#guardiaNameTxt').val();
     var emrCont = $('#emgContactTxt').val();
-
 
 
     var form = new FormData();
@@ -84,3 +82,29 @@ $('#employeeSaveBtn').on('click', ()=>{
 
 
 })
+
+// Get All employees and employee table set data
+const getAllEmployees = () => {
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/shoes/employee/allEmployees",
+        contentType: "application/json",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+        },
+        success: function(data) {
+            data.forEach(employees => {
+                var newRow = "<tr><th scope='row'>" + employees.employeeCode + "</th><td>" + employees.employeeName + "</td><td>" + employees.gender + "</td><td>" + employees.status + "</td><td>" + employees.designation   + "</td><td>" + employees.role + "</td><td>" + employees.birthDay  +  "</td><td>" + employees.joinDate +  "</td><td>" + employees.attachedBranch +  "</td><td>" + employees.address1  + "</td><td>"  + employees.contact + "</td><td>"  + employees.email   + "</td><td>"  + employees.guardianName + "</td></tr>";
+                $("#employee_Table").append(newRow);
+            });
+
+        },
+        error: function(xhr, status, error) {
+            alert("Failed");
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+   getAllEmployees();
+});
