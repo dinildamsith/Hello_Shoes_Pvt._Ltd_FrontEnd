@@ -74,6 +74,30 @@ $('#supplierUpdateBtn').on('click', ()=>{
 
 })
 
+// Delete Employee
+$('#supplierDeleteBtn').on('click', ()=>{
+
+    var deleteSupplierCode = $('#supplierCodeTxt').val();
+
+    $.ajax({
+        type: "DELETE",
+        url: "http://localhost:8080/shoes/supplier/delete/"+deleteSupplierCode,
+        contentType: "application/json",
+        data: false,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+        },
+        success: function(data) {
+            $('#supplier_Table').empty();
+            getAllSupplier();
+            alert("Success");
+        },
+        error: function(xhr, status, error) {
+            alert("Failed");
+        }
+    });
+
+})
 
 
 // get All Suppliers and supplier table set data
