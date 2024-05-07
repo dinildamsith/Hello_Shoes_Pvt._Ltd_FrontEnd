@@ -71,7 +71,8 @@ $('#employeeSaveBtn').on('click', ()=>{
                 xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
             },
             success: function(data) {
-
+                $("#employee_Table").empty();
+                getAllEmployees()
                 alert("Success");
             },
             error: function(xhr, status, error) {
@@ -120,6 +121,31 @@ $('#employeeSearchBtn').on('click', ()=>{
             alert("Failed");
         }
     });
+})
+
+// Delete Employee
+$('#employeeDeleteBtn').on('click',()=>{
+    var deleteEmpId = $('#employeeSearchTxt').val();
+    var deleteEmpMail = $('#mailTxt').val();
+
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:8080/shoes/employee/delete/"+ deleteEmpMail +"/"+deleteEmpId,
+        contentType: "application/json",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+        },
+        success: function(data) {
+            $("#employee_Table").empty();
+            getAllEmployees()
+            console.log(data)
+            alert("success")
+        },
+        error: function(xhr, status, error) {
+            alert("Failed");
+        }
+    });
+
 })
 
 
