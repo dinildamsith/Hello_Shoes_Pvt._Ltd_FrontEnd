@@ -37,6 +37,7 @@ $('#customerSaveBtn').on('click', ()=>{
             success: function(data) {
                 $("#customer_Table").empty();
                 getAllCustomerSendAJAX(jwtToken)
+                clearTextFields();
                 alert("Success");
             },
             error: function(xhr, status, error) {
@@ -82,6 +83,7 @@ $('#custUpdateBtn').on('click', ()=>{
             success: function(data) {
                 $("#customer_Table").empty();
                 getAllCustomerSendAJAX(jwtToken)
+                clearTextFields();
                 alert("Success");
             },
             error: function(xhr, status, error) {
@@ -109,6 +111,7 @@ $('#custDeleteBtn').on('click', ()=>{
             success: function(data) {
                 $("#customer_Table").empty();
                 getAllCustomerSendAJAX(jwtToken)
+                clearTextFields();
                 alert("Success");
             },
             error: function(xhr, status, error) {
@@ -190,6 +193,22 @@ $("#customer_Table").on("click","tr", function (){
 
  
 });
+
+
+function clearTextFields() {
+    $("#customerIdTxt").val("");
+    $("#customerNameTxt").val("");
+    $("#custContactTxt").val("");
+    $("#custEmailTxt").val("");
+    $("#customerGenderOpation").val("");
+    $("#custAddress1").val("");
+    $("#custAddress2").val("");
+    $("#custBirthday").val("");
+    $("#custJoinDate").val("");
+    $("#custLevel").val("");
+    $("#totalPoints").val("");
+    $("#recentPurchaseDate").val("");
+}
 
 
 
