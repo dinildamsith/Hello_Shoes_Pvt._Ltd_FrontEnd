@@ -195,6 +195,7 @@ $("#customer_Table").on("click","tr", function (){
 });
 
 
+// Text Fields Clear 
 function clearTextFields() {
     $("#customerIdTxt").val("");
     $("#customerNameTxt").val("");
