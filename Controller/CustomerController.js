@@ -187,6 +187,8 @@ $("#customer_Table").on("click","tr", function (){
     $("#totalPoints").val(data.eq(9).text());
     $("#recentPurchaseDate").val(data.eq(10).text());
 
+
+ 
 });
 
 
@@ -195,3 +197,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const jwtToken = localStorage.getItem("jwtToken");
     getAllCustomerSendAJAX(jwtToken)
 });
+
+
+//------------------------------------ Btn Css
