@@ -83,6 +83,25 @@ $('#itemCodeOption').change(function() {
         }
     });
 
+    // Select Item After Item Have All Sizes Set Item Option
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/shoes/item/selectItemSizesGet/"+ selectItemId,
+        contentType: "application/json",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+        },
+        success: function(data) {
+            data.forEach(items => {
+                console.log(items)
+                $('#sizeOption').append($('<option></option>').attr('value', items).text(items));
+            });
+        },
+        error: function(xhr, status, error) {
+            alert("Failed");
+        }
+    });
+
 });
 
 // Purchase Date Set
