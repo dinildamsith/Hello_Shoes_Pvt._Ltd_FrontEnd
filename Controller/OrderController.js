@@ -63,6 +63,28 @@ const getAllItems = () => {
     });
 };
 
+// Select Item Id after item name set
+$('#itemCodeOption').change(function() {
+
+    var selectItemId = $('#itemCodeOption').val()
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/shoes/item/search/"+ selectItemId,
+        contentType: "application/json",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+        },
+        success: function(data) {
+            $('#itemDescriptionTxt').val(data.itemDesc)
+        },
+        error: function(xhr, status, error) {
+            alert("Failed");
+        }
+    });
+
+});
+
 // Purchase Date Set
 function purchaseDateSet(){
 var currentDate = new Date();
