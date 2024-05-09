@@ -260,7 +260,7 @@ function handleChange() {
             let incrementedId = parseInt(data, 10) + 1;
             var id = incrementedId.toString().padStart(data.length, '0');
             var createItemId = idFirstLetters+id
-            $('#itemIdTxt').val(createItemId);
+           $('#itemIdTxt').val(createItemId);
         },
         error: function (xhr, status, error) {
             alert("Failed");
