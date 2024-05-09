@@ -1,6 +1,5 @@
 // Customer Ids Set
 const getAllCustomerSendAJAX = () => {
-    console.log("sss")
     $.ajax({
         type: "GET",
         url: "http://localhost:8080/shoes/customer/getAllCustomer",
@@ -43,11 +42,19 @@ $('#customerCodeOption').change(function() {
 
 });
 
-
-
+// Purchase Date Set
+function purchaseDateSet(){
+var currentDate = new Date();
+var year = currentDate.getFullYear();
+var month = (currentDate.getMonth() + 1 < 10) ? '0' + (currentDate.getMonth() + 1) : (currentDate.getMonth() + 1);
+var day = (currentDate.getDate() < 10) ? '0' + currentDate.getDate() : currentDate.getDate();
+var formattedDate = year + '-' + month + '-' + day;
+$('#purchaseDateTxt').val(formattedDate);
+}
 
 
 
 document.addEventListener('DOMContentLoaded', function() {
     getAllCustomerSendAJAX()
+    purchaseDateSet();
 });
