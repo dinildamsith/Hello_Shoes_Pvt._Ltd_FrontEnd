@@ -1,4 +1,3 @@
-// Customer Ids Set
 import {OrderModel} from "../Model/OrderModel.js";
 
 const getAllCustomerSendAJAX = () => {
@@ -189,8 +188,30 @@ $('#orderBuyBtn').on('click', ()=>{
 
 })
 
+
+// next Order Id Generate
+function generateNewOrderId(){
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/shoes/order/newOrderId",
+        contentType: "application/json",
+        data: false,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+        },
+        success: function(data) {
+            $('#ordrCodeTxt').val(data)
+            alert("Success");
+        },
+        error: function(xhr, status, error) {
+            alert("Failed");
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     getAllCustomerSendAJAX()
     purchaseDateSet();
     getAllItems();
+    generateNewOrderId()
 });
