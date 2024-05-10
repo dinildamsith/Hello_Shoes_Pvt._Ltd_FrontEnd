@@ -257,10 +257,13 @@ function handleChange() {
             xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
         },
         success: function (data) {
-            let incrementedId = parseInt(data, 10) + 1;
-            var id = incrementedId.toString().padStart(data.length, '0');
-            var createItemId = idFirstLetters+id
-           $('#itemIdTxt').val(createItemId);
+       
+                let incrementedId = parseInt(data, 10) + 1;
+                var id = incrementedId.toString().padStart(data.length, '0');
+                var createItemId = idFirstLetters+id
+                $('#itemIdTxt').val(createItemId);
+
+
         },
         error: function (xhr, status, error) {
             alert("Failed");
