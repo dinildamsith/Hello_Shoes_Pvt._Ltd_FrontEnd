@@ -1,4 +1,6 @@
 // Customer Ids Set
+import {OrderModel} from "../Model/OrderModel.js";
+
 const getAllCustomerSendAJAX = () => {
     $.ajax({
         type: "GET",
@@ -63,26 +65,11 @@ const getAllItems = () => {
     });
 };
 
-// Select Item Id after item name set
+// Select Item Id after item sizE set
 $('#itemCodeOption').change(function() {
 
     var selectItemId = $('#itemCodeOption').val()
-
-    $.ajax({
-        type: "GET",
-        url: "http://localhost:8080/shoes/item/search/"+ selectItemId,
-        contentType: "application/json",
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
-        },
-        success: function(data) {
-            $('#itemDescriptionTxt').val(data.itemDesc)
-        },
-        error: function(xhr, status, error) {
-            alert("Failed");
-        }
-    });
-
+    console.log(selectItemId)
     // Select Item After Item Have All Sizes Set Item Option
     $.ajax({
         type: "GET",
@@ -94,6 +81,7 @@ $('#itemCodeOption').change(function() {
         success: function(data) {
             data.forEach(items => {
                 console.log(items)
+                $("#sizeOption").empty();
                 $('#sizeOption').append($('<option></option>').attr('value', items).text(items));
             });
         },
@@ -103,6 +91,25 @@ $('#itemCodeOption').change(function() {
     });
 
 });
+
+$('#itemCodeOption').change(function (){
+    var selectItemId = $('#itemCodeOption').val()
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/shoes/item/search/"+ selectItemId,
+        contentType: "application/json",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+        },
+        success: function(data) {
+            $('#itemDescriptionTxt').empty
+            $('#itemDescriptionTxt').val(data.itemDesc)
+        },
+        error: function(xhr, status, error) {
+            alert("Failed");
+        }
+    });
+})
 
 // Purchase Date Set
 function purchaseDateSet(){
