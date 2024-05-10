@@ -123,6 +123,72 @@ $('#purchaseDateTxt').val(formattedDate);
 
 
 
+// Order Purchase
+$('#orderBuyBtn').on('click', ()=>{
+
+    var orderId = $('#ordrCodeTxt').val();
+    var date = $('#purchaseDateTxt').val();
+    var customerCode = $('#customerCodeOption').val();
+    var customerName = $('#customerNameTxt').val();
+    var itemCode = $('#itemCodeOption').val();
+    var itemName = $('#itemDescriptionTxt').val();
+    var size = $('#sizeOption').val();
+    var qty = $('#quantityTxt').val();
+    var unitPrice = $("#unitPriceTxt").val();
+    var empId = $('#orderSaleEmpIdTxt').val();
+    var empName = $('#empNameTxt').val();
+    var payMethod = $('#paymentMethod').val()
+
+
+    var orderData = JSON.stringify({
+        "orderCode": orderId,
+        "purchaseDate": date,
+        "customerName": customerName,
+        "itemDesc": itemName,
+        "size" : parseInt(size),
+        "unitPrice": unitPrice,
+        "qty": parseInt(qty),
+        "paymentMethod": payMethod,
+        "cashierName": empName,
+        "customerDetails": {
+          "customerCode": customerCode
+        },
+        "buyItem": [
+          {
+            "itemCode": itemCode
+          }
+        ],
+        "order": [
+          {
+            "orderCode": orderId
+          }
+        ],
+        "employeeEntity": {
+          "employeeCode": empId
+        }
+      });
+      
+
+
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:8080/shoes/order/save",
+        contentType: "application/json",
+        data: orderData,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+        },
+        success: function(data) {
+
+            alert("Success");
+        },
+        error: function(xhr, status, error) {
+            alert("Failed");
+        }
+    });
+
+})
+
 document.addEventListener('DOMContentLoaded', function() {
     getAllCustomerSendAJAX()
     purchaseDateSet();
