@@ -178,7 +178,7 @@ $('#orderBuyBtn').on('click', ()=>{
             xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
         },
         success: function(data) {
-
+            generateNewOrderId()
             alert("Success");
         },
         error: function(xhr, status, error) {
