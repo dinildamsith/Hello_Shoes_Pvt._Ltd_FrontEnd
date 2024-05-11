@@ -201,7 +201,6 @@ function generateNewOrderId(){
         },
         success: function(data) {
             $('#ordrCodeTxt').val(data)
-            alert("Success");
         },
         error: function(xhr, status, error) {
             alert("Failed");
@@ -209,7 +208,29 @@ function generateNewOrderId(){
     });
 }
 
+//
+$('#paymentMethod').change(function (){
+    var selectPayMethod = $('#paymentMethod').val();
+
+    if(selectPayMethod === "CREDITCARD"){
+           $('#cashTxt').css('display','none')
+           $('#cashLbl').css('display','none')
+           $('#creditCardTxt').css('display','block')
+           $('#cardLbl').css('display','block')
+    }else{
+        $('#cashTxt').css('display','block')
+        $('#cashLbl').css('display','block')
+        $('#creditCardTxt').css('display','none')
+        $('#cardLbl').css('display','none')
+    }
+
+})
+
 document.addEventListener('DOMContentLoaded', function() {
+    $('#cashTxt').css('display','none')
+    $('#cashLbl').css('display','none')
+    $('#creditCardTxt').css('display','none')
+    $('#cardLbl').css('display','none')
     getAllCustomerSendAJAX()
     purchaseDateSet();
     getAllItems();
