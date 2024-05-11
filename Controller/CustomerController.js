@@ -1,7 +1,10 @@
 import {CustomerModel} from "../Model/CustomerModel.js";
 
 
-var jwtToken = localStorage.getItem("jwtToken")
+
+
+
+let jwtToken = localStorage.getItem("jwtToken")
 
 
 // Save Customer
@@ -38,7 +41,8 @@ $('#customerSaveBtn').on('click', ()=>{
                 $("#customer_Table").empty();
                 getAllCustomerSendAJAX(jwtToken)
                 clearTextFields();
-                alert("Success");
+
+
             },
             error: function(xhr, status, error) {
                 alert("Failed");
@@ -84,7 +88,6 @@ $('#custUpdateBtn').on('click', ()=>{
                 $("#customer_Table").empty();
                 getAllCustomerSendAJAX(jwtToken)
                 clearTextFields();
-                alert("Success");
             },
             error: function(xhr, status, error) {
                 alert("Failed");

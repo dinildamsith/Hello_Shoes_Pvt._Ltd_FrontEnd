@@ -196,12 +196,7 @@ $('#itemSearchBtn').on('click', ()=>{
             $('#expectedProfitTxt').val(data.expectedProfit);
             $('#statusTxt').val(data.status);
             $('#profitMarginTxt').val(data.profitMargin);
-            // // $('#selectImage').val(data.itemPic);
-            // // console.log(data.itemPic)
-            // // Assuming you have a Base64 encoded image string
-            // const base64String = "data:image/png;base64," + data.itemPic;
-            // const img = document.getElementById('selectImage'); // Get the existing <img> element by ID
-            // img.src = base64String; // Set the src attribute of the <img> element to the Base64 string
+
 
 
         },
