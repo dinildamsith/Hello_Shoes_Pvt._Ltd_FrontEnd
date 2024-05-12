@@ -18,36 +18,42 @@ $('#customerSaveBtn').on('click', ()=>{
     var level = $('#custLevel').val();
 
 
-    var customerDetails = new CustomerModel(customerId,customerName,gender,joinDate,level,bod,address1,address2,contact,mail);
+    if (validate(customerId,"Customer Id") && validate(customerName,"Customer Name") && validate(contact,"Contact") && validate(mail,"Mail") && validate(gender,"Gender") && validate(address1,"Address 1") && validate(address2,"Address 2") && validate(bod,"Birthday") && validate(joinDate,"Join Date") && validate(level,"Level")){
 
-    var customerDetailsJson = JSON.stringify(customerDetails);
+        var customerDetails = new CustomerModel(customerId,customerName,gender,joinDate,level,bod,address1,address2,contact,mail);
+        var customerDetailsJson = JSON.stringify(customerDetails);
 
 
-    const sendAJAX = (customerDetails,jwtToken) => {
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:8080/shoes/customer/save",
-            contentType: "application/json",
-            data: customerDetails,
-            beforeSend: function(xhr) {
-                xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
-            },
-            success: function(data) {
-                $("#customer_Table").empty();
-                getAllCustomerSendAJAX(jwtToken)
-                clearTextFields();
-                $('#custLevel').val('BRONZE')
-                Swal.fire({
-                    title: "Customer Save Success",
-                    icon: "success"
-                });
-            },
-            error: function(xhr, status, error) {
-                alert("Failed");
-            }
-        });
-    };
-    sendAJAX(customerDetailsJson, jwtToken);
+        const sendAJAX = (customerDetails,jwtToken) => {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/shoes/customer/save",
+                contentType: "application/json",
+                data: customerDetails,
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
+                },
+                success: function(data) {
+                    $("#customer_Table").empty();
+                    getAllCustomerSendAJAX(jwtToken)
+                    clearTextFields();
+                    $('#custLevel').val('BRONZE')
+                    Swal.fire({
+                        title: "Customer Save Success",
+                        icon: "success"
+                    });
+                },
+                error: function(xhr, status, error) {
+                    alert("Failed");
+                }
+            });
+        };
+        sendAJAX(customerDetailsJson, jwtToken);
+
+
+
+    }
+
 
 })
 
@@ -66,36 +72,40 @@ $('#custUpdateBtn').on('click', ()=>{
     var level = $('#custLevel').val();
 
 
-    var customerDetails = new CustomerModel(customerId,customerName,gender,joinDate,level,bod,address1,address2,contact,mail);
+    if (validate(customerId,"Customer Id") && validate(customerName,"Customer Name") && validate(contact,"Contact") && validate(mail,"Mail") && validate(gender,"Gender") && validate(address1,"Address 1") && validate(address2,"Address 2") && validate(bod,"Birthday") && validate(joinDate,"Join Date") && validate(level,"Level")){
 
-    var customerDetailsJson = JSON.stringify(customerDetails);
+        var customerDetails = new CustomerModel(customerId,customerName,gender,joinDate,level,bod,address1,address2,contact,mail);
+
+        var customerDetailsJson = JSON.stringify(customerDetails);
 
 
-    const sendAJAX = (customerDetails,jwtToken) => {
-        $.ajax({
-            type: "PUT",
-            url: "http://localhost:8080/shoes/customer/update/"+ customerId,
-            contentType: "application/json",
-            data: customerDetails,
-            beforeSend: function(xhr) {
-                xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
-            },
-            success: function(data) {
-                $("#customer_Table").empty();
-                getAllCustomerSendAJAX(jwtToken)
-                clearTextFields();
-                $('#custLevel').val('BRONZE')
-                Swal.fire({
-                    title: "Customer Update Success",
-                    icon: "info"
-                });
-            },
-            error: function(xhr, status, error) {
-                alert("Failed");
-            }
-        });
-    };
-    sendAJAX(customerDetailsJson, jwtToken);
+        const sendAJAX = (customerDetails,jwtToken) => {
+            $.ajax({
+                type: "PUT",
+                url: "http://localhost:8080/shoes/customer/update/"+ customerId,
+                contentType: "application/json",
+                data: customerDetails,
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
+                },
+                success: function(data) {
+                    $("#customer_Table").empty();
+                    getAllCustomerSendAJAX(jwtToken)
+                    clearTextFields();
+                    $('#custLevel').val('BRONZE')
+                    Swal.fire({
+                        title: "Customer Update Success",
+                        icon: "info"
+                    });
+                },
+                error: function(xhr, status, error) {
+                    alert("Failed");
+                }
+            });
+        };
+        sendAJAX(customerDetailsJson, jwtToken);
+
+    }
 
 })
 
@@ -105,58 +115,60 @@ $('#custDeleteBtn').on('click', ()=>{
 
     var customerId = $('#customerIdTxt').val();
 
+    if (validate(customerId,"Customer Id")){
 
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            confirmButton: "btn btn-success m-1",
-            cancelButton: "btn btn-danger"
-        },
-        buttonsStyling: false
-    });
-    swalWithBootstrapButtons.fire({
-        title: "Do you want to Remove this Customer ?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel!",
-        reverseButtons: true
-    }).then((result) => {
-        if (result.isConfirmed) {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success m-1",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            title: "Do you want to Remove this Customer ?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
 
-            $.ajax({
-                type: "DELETE",
-                url: "http://localhost:8080/shoes/customer/delete/"+ customerId,
-                contentType: "application/json",
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
-                },
-                success: function(data) {
-                    $("#customer_Table").empty();
-                    getAllCustomerSendAJAX(jwtToken)
-                    clearTextFields();
-                    $('#custLevel').val('BRONZE')
+                $.ajax({
+                    type: "DELETE",
+                    url: "http://localhost:8080/shoes/customer/delete/"+ customerId,
+                    contentType: "application/json",
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+                    },
+                    success: function(data) {
+                        $("#customer_Table").empty();
+                        getAllCustomerSendAJAX(jwtToken)
+                        clearTextFields();
+                        $('#custLevel').val('BRONZE')
 
-                },
-                error: function(xhr, status, error) {
-                    alert("Failed");
-                }
-            });
+                    },
+                    error: function(xhr, status, error) {
+                        alert("Failed");
+                    }
+                });
 
-            swalWithBootstrapButtons.fire({
-                title: "Customer Deleted Success !",
-                icon: "success"
-            });
-        } else if (
-            /* Read more about handling dismissals below */
-            result.dismiss === Swal.DismissReason.cancel
-        ) {
-            swalWithBootstrapButtons.fire({
-                title: "Customer Deleted Cancelled !",
-                icon: "error"
-            });
-        }
-    });
+                swalWithBootstrapButtons.fire({
+                    title: "Customer Deleted Success !",
+                    icon: "success"
+                });
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire({
+                    title: "Customer Deleted Cancelled !",
+                    icon: "error"
+                });
+            }
+        });
 
+    }
 
 })
 
@@ -165,24 +177,45 @@ $('#custDeleteBtn').on('click', ()=>{
 $('#customerSearchBtn').on('click', ()=>{
     var customerId = $('#custSearchTxt').val();
 
-    const sendAJAX = (jwtToken) => {
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:8080/shoes/customer/search/"+ customerId,
-            contentType: "application/json",
-            beforeSend: function(xhr) {
-                xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
-            },
-            success: function(data) {
-                alert("Success");
-                console.log(data)
-            },
-            error: function(xhr, status, error) {
-                alert("Failed");
-            }
-        });
-    };
-    sendAJAX(jwtToken);
+
+    if (validate(customerId,"Customer Id")){
+        const sendAJAX = (jwtToken) => {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/shoes/customer/search/"+ customerId,
+                contentType: "application/json",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
+                },
+                success: function(data) {
+                    if (!data){
+                        Swal.fire({
+                            title: "Sorry This Id Have No Customer !",
+                            icon: "info"
+                        });
+                    }else {
+                        $("#customerIdTxt").val(data.customerCode);
+                        $("#customerNameTxt").val(data.customerName);
+                        $("#custContactTxt").val(data.contactNumber);
+                        $("#custEmailTxt").val(data.email);
+                        $("#customerGenderOpation").val(data.customerGender);
+                        $("#custAddress1").val(data.addressLine1);
+                        $("#custAddress2").val(data.addressLine2);
+                        $("#custBirthday").val(data.birthDay);
+                        $("#custJoinDate").val(data.customerJoinDate);
+                        $("#custLevel").val(data.level);
+                        $("#totalPoints").val(data.totalPoints);
+                        $("#recentPurchaseDate").val(data.recentPurchaseDate);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("Failed");
+                }
+            });
+        };
+        sendAJAX(jwtToken);
+    }
+
 
 })
 
@@ -247,6 +280,21 @@ function clearTextFields() {
     $("#totalPoints").val("");
     $("#recentPurchaseDate").val("");
 }
+
+
+// Validation Function
+function validate(value, field_name){
+    if (!value){
+        Swal.fire({
+            icon: 'warning',
+            title: `Please enter the ${field_name}!`
+        });
+        return false;
+    }
+    return true;
+}
+
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
