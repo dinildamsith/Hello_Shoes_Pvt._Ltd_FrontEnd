@@ -36,6 +36,7 @@ $('#customerSaveBtn').on('click', ()=>{
                 $("#customer_Table").empty();
                 getAllCustomerSendAJAX(jwtToken)
                 clearTextFields();
+                $('#custLevel').val('BRONZE')
                 Swal.fire({
                     title: "Customer Save Success",
                     icon: "success"
@@ -83,6 +84,7 @@ $('#custUpdateBtn').on('click', ()=>{
                 $("#customer_Table").empty();
                 getAllCustomerSendAJAX(jwtToken)
                 clearTextFields();
+                $('#custLevel').val('BRONZE')
                 Swal.fire({
                     title: "Customer Update Success",
                     icon: "info"
@@ -103,39 +105,58 @@ $('#custDeleteBtn').on('click', ()=>{
 
     var customerId = $('#customerIdTxt').val();
 
-    Swal.fire({
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success m-1",
+            cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
         title: "Do you want to Remove this Customer ?",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
 
-                $.ajax({
-                    type: "DELETE",
-                    url: "http://localhost:8080/shoes/customer/delete/"+ customerId,
-                    contentType: "application/json",
-                    beforeSend: function(xhr) {
-                        xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
-                    },
-                    success: function(data) {
-                        $("#customer_Table").empty();
-                        getAllCustomerSendAJAX(jwtToken)
-                        clearTextFields();
-                    },
-                    error: function(xhr, status, error) {
-                        alert("Failed");
-                    }
-                });
+            $.ajax({
+                type: "DELETE",
+                url: "http://localhost:8080/shoes/customer/delete/"+ customerId,
+                contentType: "application/json",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+                },
+                success: function(data) {
+                    $("#customer_Table").empty();
+                    getAllCustomerSendAJAX(jwtToken)
+                    clearTextFields();
+                    $('#custLevel').val('BRONZE')
 
-            Swal.fire({
+                },
+                error: function(xhr, status, error) {
+                    alert("Failed");
+                }
+            });
+
+            swalWithBootstrapButtons.fire({
                 title: "Customer Deleted Success !",
                 icon: "success"
             });
+        } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire({
+                title: "Customer Deleted Cancelled !",
+                icon: "error"
+            });
         }
     });
+
 
 })
 
@@ -231,6 +252,7 @@ function clearTextFields() {
 document.addEventListener('DOMContentLoaded', function() {
     const jwtToken = localStorage.getItem("jwtToken");
     getAllCustomerSendAJAX(jwtToken)
+    $('#custLevel').val('BRONZE')
 
 });
 
