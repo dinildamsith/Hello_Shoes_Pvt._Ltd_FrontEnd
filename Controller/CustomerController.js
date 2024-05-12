@@ -1,9 +1,6 @@
 import {CustomerModel} from "../Model/CustomerModel.js";
 
 
-
-
-
 let jwtToken = localStorage.getItem("jwtToken")
 
 
@@ -26,8 +23,6 @@ $('#customerSaveBtn').on('click', ()=>{
     var customerDetailsJson = JSON.stringify(customerDetails);
 
 
-
-
     const sendAJAX = (customerDetails,jwtToken) => {
         $.ajax({
             type: "POST",
@@ -41,8 +36,10 @@ $('#customerSaveBtn').on('click', ()=>{
                 $("#customer_Table").empty();
                 getAllCustomerSendAJAX(jwtToken)
                 clearTextFields();
-
-
+                Swal.fire({
+                    title: "Customer Save Success",
+                    icon: "success"
+                });
             },
             error: function(xhr, status, error) {
                 alert("Failed");
@@ -73,8 +70,6 @@ $('#custUpdateBtn').on('click', ()=>{
     var customerDetailsJson = JSON.stringify(customerDetails);
 
 
-
-
     const sendAJAX = (customerDetails,jwtToken) => {
         $.ajax({
             type: "PUT",
@@ -88,6 +83,10 @@ $('#custUpdateBtn').on('click', ()=>{
                 $("#customer_Table").empty();
                 getAllCustomerSendAJAX(jwtToken)
                 clearTextFields();
+                Swal.fire({
+                    title: "Customer Update Success",
+                    icon: "info"
+                });
             },
             error: function(xhr, status, error) {
                 alert("Failed");
@@ -101,28 +100,42 @@ $('#custUpdateBtn').on('click', ()=>{
 
 // Delete Customer
 $('#custDeleteBtn').on('click', ()=>{
+
     var customerId = $('#customerIdTxt').val();
 
-    const sendAJAX = (jwtToken) => {
-        $.ajax({
-            type: "DELETE",
-            url: "http://localhost:8080/shoes/customer/delete/"+ customerId,
-            contentType: "application/json",
-            beforeSend: function(xhr) {
-                xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
-            },
-            success: function(data) {
-                $("#customer_Table").empty();
-                getAllCustomerSendAJAX(jwtToken)
-                clearTextFields();
-                alert("Success");
-            },
-            error: function(xhr, status, error) {
-                alert("Failed");
-            }
-        });
-    };
-    sendAJAX(jwtToken);
+    Swal.fire({
+        title: "Do you want to Remove this Customer ?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+                $.ajax({
+                    type: "DELETE",
+                    url: "http://localhost:8080/shoes/customer/delete/"+ customerId,
+                    contentType: "application/json",
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+                    },
+                    success: function(data) {
+                        $("#customer_Table").empty();
+                        getAllCustomerSendAJAX(jwtToken)
+                        clearTextFields();
+                    },
+                    error: function(xhr, status, error) {
+                        alert("Failed");
+                    }
+                });
+
+            Swal.fire({
+                title: "Customer Deleted Success !",
+                icon: "success"
+            });
+        }
+    });
 
 })
 
@@ -215,11 +228,9 @@ function clearTextFields() {
 }
 
 
-
 document.addEventListener('DOMContentLoaded', function() {
     const jwtToken = localStorage.getItem("jwtToken");
     getAllCustomerSendAJAX(jwtToken)
+
 });
 
-
-//------------------------------------ Btn Css
