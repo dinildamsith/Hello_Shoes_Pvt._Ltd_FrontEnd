@@ -103,6 +103,7 @@ $('#itemCodeOption').change(function (){
         success: function(data) {
             $('#itemDescriptionTxt').empty
             $('#itemDescriptionTxt').val(data.itemDesc)
+            $('#unitPriceTxt').val(data.unitPriceSale)
         },
         error: function(xhr, status, error) {
             alert("Failed");
