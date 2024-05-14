@@ -55,6 +55,9 @@ function displaySelectedImage(event) {
 $('#itemBuyBtn').on('click', ()=>{
     var  itemId = $('#itemIdTxt').val();
     var  itemDesc = $('#itemDescTxt').val();
+    var itemType = $('#itemTypeOpation').val()
+    var occasionType = $('#occasionOpation').val();
+    var verities = $('#veritiesOpation').val();
     var  category = $('#itemCategory').val();
     var  size = $('#sizeTxt').val();
     var  qty = $('#quantityTxt').val();
@@ -63,40 +66,48 @@ $('#itemBuyBtn').on('click', ()=>{
     var supId = $('#supplierCodeOption').val();
     var expectedProfit = $('#expectedProfitTxt').val();
 
+    
+    if(validate(itemId,"Item Id") && validate(itemDesc,"Item Decription") && validate(itemType,"Item Type") && validate(occasionType,"Occasion Type") && validate(verities,"Verities") && validate(category,"Category") && validate(size,"Size") && validate(qty,"Quantity") && validate(buyPrice,"Buy Price") && validate(salePrice,"Sale Price") && validate(supId,"Supplier Id") && validate(expectedProfit,"Expected Profit") && validate(image,"Item Image")){
 
-    var form = new FormData();
-    form.append("item_code", itemId);
-    form.append("item_desc", itemDesc);
-    form.append("item_pic",  image);
-    form.append("category", category);
-    form.append("salePrice", salePrice);
-    form.append("expectedProfit", expectedProfit);
-    form.append("profitMargin", 0);
-    form.append("buyPrice", buyPrice);
+        var form = new FormData();
+        form.append("item_code", itemId);
+        form.append("item_desc", itemDesc);
+        form.append("item_pic",  image);
+        form.append("category", category);
+        form.append("itemType",itemType);
+        form.append("occasion",occasionType);
+        form.append("verities",verities);
+        form.append("salePrice", salePrice);
+        form.append("expectedProfit", expectedProfit);
+        form.append("profitMargin", 0);
+        form.append("buyPrice", buyPrice);
 
 
-    const sendAJAX = (itemDetails,jwtToken) => {
-        $.ajax({
-            type: "POST",
-            url : "http://localhost:8080/shoes/item/save/" + supId + "/" + size + "/" + qty,
-            processData: false,
-            mimeType: "multipart/form-data",
-            contentType: false,
-            data: form,
-            beforeSend: function(xhr) {
-                xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
-            },
-            success: function(data) {
-                $("#item_Table").empty();
-                getAllItemSetTabelSendAJAX(jwtToken)
-                alert("Success");
-            },
-            error: function(xhr, status, error) {
-                alert("Failed");
-            }
-        });
-    };
-    sendAJAX(form, jwtToken);
+        const sendAJAX = (itemDetails,jwtToken) => {
+            $.ajax({
+                type: "POST",
+                url : "http://localhost:8080/shoes/item/save/" + supId + "/" + size + "/" + qty,
+                processData: false,
+                mimeType: "multipart/form-data",
+                contentType: false,
+                data: form,
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
+                },
+                success: function(data) {
+                    $("#item_Table").empty();
+                    getAllItemSetTabelSendAJAX(jwtToken)
+                    alert("Success");
+                },
+                error: function(xhr, status, error) {
+                    alert("Failed");
+                }
+            });
+        };
+        sendAJAX(form, jwtToken);
+
+    }
+
 })
 
 
@@ -183,11 +194,20 @@ $('#itemSearchBtn').on('click', ()=>{
             xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
         },
         success: function(data) {
-            console.log(data.itemCode)
-            console.log(data.stockEntityList)
             $('#itemIdTxt').val(data.itemCode);
             $('#itemDescTxt').val(data.itemDesc);
             $('#itemCategory').val(data.category);
+            $("#itemTypeOpation").val(data.itemType.charAt(0).toUpperCase())
+            $('#occasionOpation').val(data.occasion.charAt(0).toUpperCase())
+            if (data.verities === 'Flip Flops'){
+                $('#veritiesOpation').val('FF')
+            }else if(data.verities === "Sandals"){
+                $('#veritiesOpation').val('SD')
+            }else if(data.verities === "Slippers"){
+                $('#veritiesOpation').val('SL')
+            }else {
+                $('#veritiesOpation').val(data.verities.charAt(0).toUpperCase())
+            }
             $('#sizeTxt').val(data.stockEntityList[0].itemSize);
             $('#quantityTxt').val(data.stockEntityList[0].qty);
             $('#salePriceTxt').val(data.unitPriceSale);
@@ -196,6 +216,7 @@ $('#itemSearchBtn').on('click', ()=>{
             $('#expectedProfitTxt').val(data.expectedProfit);
             $('#statusTxt').val(data.status);
             $('#profitMarginTxt').val(data.profitMargin);
+
 
 
 
@@ -275,10 +296,22 @@ function handleChange() {
 }
 
 
+// Validation Function
+function validate(value, field_name){
+    if (!value){
+        Swal.fire({
+            icon: 'warning',
+            title: `Please enter the ${field_name}!`
+        });
+        return false;
+    }
+    return true;
+}
 
 
 
 document.addEventListener('DOMContentLoaded', function() {
     const jwtToken = localStorage.getItem("jwtToken");
     getAllItemSetTabelSendAJAX(jwtToken)
+
 });
