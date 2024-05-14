@@ -209,7 +209,7 @@ $('#itemDeleteBtn').on('click', ()=>{
     var  itemId = $('#itemIdTxt').val();
 
 
-    if (validate(itemId,"Search Item Id")){
+    if (validate(itemId,"Delete Item Id")){
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -276,45 +276,50 @@ $('#itemSearchBtn').on('click', ()=>{
     $('#quantityTxt').prop('disabled', true);
 
 
-    $.ajax({
-        type: "GET",
-        url: "http://localhost:8080/shoes/item/search/"+itemId,
-        contentType: "application/json",
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
-        },
-        success: function(data) {
-            $('#itemIdTxt').val(data.itemCode);
-            $('#itemDescTxt').val(data.itemDesc);
-            $('#itemCategory').val(data.category);
-            $("#itemTypeOpation").val(data.itemType.charAt(0).toUpperCase())
-            $('#occasionOpation').val(data.occasion.charAt(0).toUpperCase())
-            if (data.verities === 'Flip Flops'){
-                $('#veritiesOpation').val('FF')
-            }else if(data.verities === "Sandals"){
-                $('#veritiesOpation').val('SD')
-            }else if(data.verities === "Slippers"){
-                $('#veritiesOpation').val('SL')
-            }else {
-                $('#veritiesOpation').val(data.verities.charAt(0).toUpperCase())
+    if (validate(itemId,"Search Item Id")){
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/shoes/item/search/"+itemId,
+            contentType: "application/json",
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
+            },
+            success: function(data) {
+                $('#itemIdTxt').val(data.itemCode);
+                $('#itemDescTxt').val(data.itemDesc);
+                $('#itemCategory').val(data.category);
+                $("#itemTypeOpation").val(data.itemType.charAt(0).toUpperCase())
+                $('#occasionOpation').val(data.occasion.charAt(0).toUpperCase())
+                if (data.verities === 'Flip Flops'){
+                    $('#veritiesOpation').val('FF')
+                }else if(data.verities === "Sandals"){
+                    $('#veritiesOpation').val('SD')
+                }else if(data.verities === "Slippers"){
+                    $('#veritiesOpation').val('SL')
+                }else {
+                    $('#veritiesOpation').val(data.verities.charAt(0).toUpperCase())
+                }
+                $('#sizeTxt').val(data.stockEntityList[0].itemSize);
+                $('#quantityTxt').val(data.stockEntityList[0].qty);
+                $('#salePriceTxt').val(data.unitPriceSale);
+                $('#buyPriceTxt').val(data.buyPrice);
+                $('#supplierCodeOption').val(data.supplierEntityList[0].supplierCode);
+                $('#expectedProfitTxt').val(data.expectedProfit);
+                $('#statusTxt').val(data.status);
+                $('#profitMarginTxt').val(data.profitMargin);
+
+
+
+
+            },
+            error: function(xhr, status, error) {
+                alert("Failed");
             }
-            $('#sizeTxt').val(data.stockEntityList[0].itemSize);
-            $('#quantityTxt').val(data.stockEntityList[0].qty);
-            $('#salePriceTxt').val(data.unitPriceSale);
-            $('#buyPriceTxt').val(data.buyPrice);
-            $('#supplierCodeOption').val(data.supplierEntityList[0].supplierCode);
-            $('#expectedProfitTxt').val(data.expectedProfit);
-            $('#statusTxt').val(data.status);
-            $('#profitMarginTxt').val(data.profitMargin);
+        });
 
+    }
 
-
-
-        },
-        error: function(xhr, status, error) {
-            alert("Failed");
-        }
-    });
 
 })
 
