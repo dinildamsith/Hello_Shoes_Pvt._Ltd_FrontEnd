@@ -97,7 +97,10 @@ $('#itemBuyBtn').on('click', ()=>{
                 success: function(data) {
                     $("#item_Table").empty();
                     getAllItemSetTabelSendAJAX(jwtToken)
-                    alert("Success");
+                    Swal.fire({
+                        title: "Item Save Success",
+                        icon: "success"
+                    });
                 },
                 error: function(xhr, status, error) {
                     alert("Failed");
@@ -117,43 +120,87 @@ $('#itemUpdateBtn').on('click', ()=>{
     var  itemId = $('#itemIdTxt').val();
     var  itemDesc = $('#itemDescTxt').val();
     var  category = $('#itemCategory').val();
+    var itemType = $('#itemTypeOpation').val()
+    var occasionType = $('#occasionOpation').val();
+    var verities = $('#veritiesOpation').val();
     var  salePrice = $('#salePriceTxt').val();
     var  buyPrice = $('#buyPriceTxt').val();
     var supId = $('#supplierCodeOption').val();
     var expectedProfit = $('#expectedProfitTxt').val();
 
 
-    var form = new FormData();
-    form.append("item_desc", itemDesc);
-    form.append("item_pic",  image);
-    form.append("category", category);
-    form.append("salePrice", salePrice);
-    form.append("expectedProfit", expectedProfit);
-    form.append("buyPrice", buyPrice);
+    if(validate(itemId,"Item Id") && validate(itemDesc,"Item Description") && validate(itemType,"Item Type") && validate(occasionType,"Occasion Type") && validate(verities,"Verities") && validate(category,"Category")  && validate(buyPrice,"Buy Price") && validate(salePrice,"Sale Price") && validate(supId,"Supplier Id") && validate(expectedProfit,"Expected Profit") && validate(image,"Item Image")) {
 
 
-    const sendAJAX = (itemDetails,jwtToken) => {
-        $.ajax({
-            type: "PUT",
-            url : "http://localhost:8080/shoes/item/update/" + itemId + "/" + supId,
-            processData: false,
-            mimeType: "multipart/form-data",
-            contentType: false,
-            data: form,
-            beforeSend: function(xhr) {
-                xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success m-1",
+                cancelButton: "btn btn-danger"
             },
-            success: function(data) {
-                $("#item_Table").empty();
-                getAllItemSetTabelSendAJAX(jwtToken)
-                alert("Success");
-            },
-            error: function(xhr, status, error) {
-                alert("Failed");
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            title: "Do you want to Update this Item ?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, Update it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                var form = new FormData();
+                form.append("item_desc", itemDesc);
+                form.append("item_pic",  image);
+                form.append("category", category);
+                form.append("itemType",itemType);
+                form.append("occasion",occasionType);
+                form.append("verities",verities);
+                form.append("salePrice", salePrice);
+                form.append("expectedProfit", expectedProfit);
+                form.append("buyPrice", buyPrice);
+
+
+                const sendAJAX = (itemDetails,jwtToken) => {
+                    $.ajax({
+                        type: "PUT",
+                        url : "http://localhost:8080/shoes/item/update/" + itemId + "/" + supId,
+                        processData: false,
+                        mimeType: "multipart/form-data",
+                        contentType: false,
+                        data: form,
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
+                        },
+                        success: function(data) {
+                            $("#item_Table").empty();
+                            getAllItemSetTabelSendAJAX(jwtToken)
+                        },
+                        error: function(xhr, status, error) {
+                            alert("Failed");
+                        }
+                    });
+                };
+                sendAJAX(form, jwtToken);
+
+                swalWithBootstrapButtons.fire({
+                    title: "Item Update Success !",
+                    icon: "success"
+                });
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire({
+                    title: "Item Update Cancelled !",
+                    icon: "error"
+                });
             }
         });
-    };
-    sendAJAX(form, jwtToken);
+
+
+    }
+
 })
 
 
@@ -161,30 +208,73 @@ $('#itemUpdateBtn').on('click', ()=>{
 $('#itemDeleteBtn').on('click', ()=>{
     var  itemId = $('#itemIdTxt').val();
 
-            const sendAJAX = (jwtToken) => {
-                $.ajax({
-                    type: "DELETE",
-                    url: "http://localhost:8080/shoes/item/delete/"+ itemId,
-                    beforeSend: function(xhr) {
-                        xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
-                    },
-                    success: function(data) {
-                        $("#item_Table").empty();
-                        getAllItemSetTabelSendAJAX(jwtToken)
-                        alert("Success");
-                    },
-                    error: function(xhr, status, error) {
-                        alert("Failed");
-                    }
-                });
-            };
-            sendAJAX(jwtToken);
 
+    if (validate(itemId,"Search Item Id")){
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success m-1",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            title: "Do you want to Delete this Item ?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, Delete it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                const sendAJAX = (jwtToken) => {
+                    $.ajax({
+                        type: "DELETE",
+                        url: "http://localhost:8080/shoes/item/delete/"+ itemId,
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
+                        },
+                        success: function(data) {
+                            $("#item_Table").empty();
+                            getAllItemSetTabelSendAJAX(jwtToken)
+
+                        },
+                        error: function(xhr, status, error) {
+                            alert("Failed");
+                        }
+                    });
+                };
+                sendAJAX(jwtToken);
+
+                swalWithBootstrapButtons.fire({
+                    title: "Item Delete Success !",
+                    icon: "success"
+                });
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire({
+                    title: "Item Delete Cancelled !",
+                    icon: "error"
+                });
+            }
+        });
+
+
+    }
 })
 
 // Item Search
 $('#itemSearchBtn').on('click', ()=>{
     var  itemId = $('#itemSearchTxt').val();
+
+    $('#itemTypeOpation').prop('disabled', true);
+    $('#occasionOpation').prop('disabled', true);
+    $('#veritiesOpation').prop('disabled', true);
+    $('#quantityTxt').prop('disabled', true);
+
 
     $.ajax({
         type: "GET",
@@ -262,8 +352,6 @@ occasionElement.addEventListener("change", handleChange);
 veritiesElement.addEventListener("change", handleChange);
 
 function handleChange() {
-
-
 
     $.ajax({
         type: "GET",
