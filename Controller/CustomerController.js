@@ -146,17 +146,22 @@ $('#custDeleteBtn').on('click', ()=>{
                         getAllCustomerSendAJAX(jwtToken)
                         clearTextFields();
                         $('#custLevel').val('BRONZE')
+                        
+                       swalWithBootstrapButtons.fire({
+                         title: "Customer Deleted Success !",
+                          icon: "success"
+                         });
 
                     },
                     error: function(xhr, status, error) {
-                        alert("Failed");
+                        Swal.fire({
+                            title: "Sorry Sir !!",
+                            text:  " Your account does not have permission to delete the customer details!",
+                            icon: "error"
+                        });
                     }
                 });
 
-                swalWithBootstrapButtons.fire({
-                    title: "Customer Deleted Success !",
-                    icon: "success"
-                });
             } else if (
                 /* Read more about handling dismissals below */
                 result.dismiss === Swal.DismissReason.cancel
