@@ -175,18 +175,22 @@ $('#itemUpdateBtn').on('click', ()=>{
                         success: function(data) {
                             $("#item_Table").empty();
                             getAllItemSetTabelSendAJAX(jwtToken)
+                            swalWithBootstrapButtons.fire({
+                                title: "Item Update Success !",
+                                icon: "success"
+                            });
                         },
                         error: function(xhr, status, error) {
-                            alert("Failed");
+                            Swal.fire({
+                                title: "Sorry Sir !!",
+                                text:  " Your account does not have permission to Update the Item details!",
+                                icon: "error"
+                            });
                         }
                     });
                 };
                 sendAJAX(form, jwtToken);
 
-                swalWithBootstrapButtons.fire({
-                    title: "Item Update Success !",
-                    icon: "success"
-                });
             } else if (
                 /* Read more about handling dismissals below */
                 result.dismiss === Swal.DismissReason.cancel
@@ -239,18 +243,22 @@ $('#itemDeleteBtn').on('click', ()=>{
                             $("#item_Table").empty();
                             getAllItemSetTabelSendAJAX(jwtToken)
 
+                            swalWithBootstrapButtons.fire({
+                                title: "Item Delete Success !",
+                                icon: "success"
+                            });
                         },
                         error: function(xhr, status, error) {
-                            alert("Failed");
+                            Swal.fire({
+                                title: "Sorry Sir !!",
+                                text:  " Your account does not have permission to delete the Item details!",
+                                icon: "error"
+                            });
                         }
                     });
                 };
                 sendAJAX(jwtToken);
 
-                swalWithBootstrapButtons.fire({
-                    title: "Item Delete Success !",
-                    icon: "success"
-                });
             } else if (
                 /* Read more about handling dismissals below */
                 result.dismiss === Swal.DismissReason.cancel
