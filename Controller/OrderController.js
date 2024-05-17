@@ -227,6 +227,21 @@ $('#paymentMethod').change(function (){
 
 })
 
+
+// Validation Function
+function validate(value, field_name){
+    if (!value){
+        Swal.fire({
+            icon: 'warning',
+            title: `Please enter the ${field_name}!`
+        });
+        return false;
+    }
+    return true;
+}
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     $('#cashTxt').css('display','none')
     $('#cashLbl').css('display','none')
