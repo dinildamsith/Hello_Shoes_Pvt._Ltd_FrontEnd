@@ -73,7 +73,10 @@ $('#employeeSaveBtn').on('click', ()=>{
             success: function(data) {
                 $("#employee_Table").empty();
                 getAllEmployees()
-                alert("Success");
+                Swal.fire({
+                    title: "Employee Save Success",
+                    icon: "success"
+                });
             },
             error: function(xhr, status, error) {
                 alert("Failed");
@@ -90,37 +93,48 @@ $('#employeeSaveBtn').on('click', ()=>{
 $('#employeeSearchBtn').on('click', ()=>{
     var searchEmpId = $('#employeeSearchTxt').val();
 
-    $.ajax({
-        type: "GET",
-        url: "http://localhost:8080/shoes/employee/search/"+searchEmpId,
-        contentType: "application/json",
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
-        },
-        success: function(data) {
+    const sendAJAX = () => {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/shoes/employee/search/" + searchEmpId,
+            contentType: "application/json",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+            },
+            success: function (data) {
 
-                 $('#employeeCodeTxt').val(data.employeeCode);
-                 $('#employeeNameTxt').val(data.employeeName);
-                 $('#employeeGenderOption').val(data.gender);
-                 $('#empStatusOption').val(data.status);
-                 $('#designationTxt').val(data.designation);
-                 $('#roleOption').val(data.role);
-                 $('#empBirthday').val(data.birthDay);
-                 $('#empJoinDate').val(data.joinDate);
-                 $('#branchOption').val(data.attachedBranch);
-                 $('#address1Txt').val(data.address1);
-                 $('#address2Txt').val(data.address2);
-                 $('#address3Txt').val(data.address3);
-                 $('#contactTxt').val(data.contact);
-                 $('#mailTxt').val(data.email);
-                 $('#guardiaNameTxt').val(data.guardianName);
-                 $('#emgContactTxt').val(data.emergencyContact);
+                if (!data) {
+                    Swal.fire({
+                        title: "Sorry This Id Have No Suppler !",
+                        icon: "info"
+                    });
+                }
 
-        },
-        error: function(xhr, status, error) {
-            alert("Failed");
-        }
-    });
+                $('#employeeCodeTxt').val(data.employeeCode);
+                $('#employeeNameTxt').val(data.employeeName);
+                $('#employeeGenderOption').val(data.gender);
+                $('#empStatusOption').val(data.status);
+                $('#designationTxt').val(data.designation);
+                $('#roleOption').val(data.role);
+                $('#empBirthday').val(data.birthDay);
+                $('#empJoinDate').val(data.joinDate);
+                $('#branchOption').val(data.attachedBranch);
+                $('#address1Txt').val(data.address1);
+                $('#address2Txt').val(data.address2);
+                $('#address3Txt').val(data.address3);
+                $('#contactTxt').val(data.contact);
+                $('#mailTxt').val(data.email);
+                $('#guardiaNameTxt').val(data.guardianName);
+                $('#emgContactTxt').val(data.emergencyContact);
+
+            },
+            error: function (xhr, status, error) {
+                alert("Failed");
+            }
+        });
+
+    }
+    sendAJAX();
 })
 
 // Update Employee
@@ -145,74 +159,151 @@ $('#employeeUpdateBtn').on('click', ()=>{
     var emrCont = $('#emgContactTxt').val();
 
 
-    var form = new FormData();
 
-    form.append("employee_name", empName);
-    form.append("employee_pic", image);
-    form.append("gender", gender);
-    form.append("status", status);
-    form.append("designation", designation);
-    form.append("role", role);
-    form.append("birthday", dob);
-    form.append("joinDate", jd);
-    form.append("attachedBranch", branch);
-    form.append("address1", addr1);
-    form.append("address2", addr2);
-    form.append("address3", addr3);
-    form.append("address4", "dd");
-    form.append("address5", "dd");
-    form.append("contact", contact);
-    form.append("email", mail);
-    form.append("guardiaName", gn);
-    form.append("emergencyContact", emrCont);
 
-    const sendAJAX = (empDetails,jwtToken) => {
-        $.ajax({
-            method: "PUT",
-            url : "http://localhost:8080/shoes/employee/update/"+ updateEmpCode,
-            processData: false,
-            mimeType: "multipart/form-data",
-            contentType: false,
-            data: form,
-            beforeSend: function(xhr) {
-                xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
-            },
-            success: function(data) {
-                $("#employee_Table").empty();
-                getAllEmployees()
-                alert("Success");
-            },
-            error: function(xhr, status, error) {
-                alert("Failed");
-            }
-        });
-    };
-    sendAJAX(form, localStorage.getItem("jwtToken"));
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success m-1",
+            cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+        title: "Do you want to Update this Employee?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, Update it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+
+            var form = new FormData();
+
+            form.append("employee_name", empName);
+            form.append("employee_pic", image);
+            form.append("gender", gender);
+            form.append("status", status);
+            form.append("designation", designation);
+            form.append("role", role);
+            form.append("birthday", dob);
+            form.append("joinDate", jd);
+            form.append("attachedBranch", branch);
+            form.append("address1", addr1);
+            form.append("address2", addr2);
+            form.append("address3", addr3);
+            form.append("address4", "dd");
+            form.append("address5", "dd");
+            form.append("contact", contact);
+            form.append("email", mail);
+            form.append("guardiaName", gn);
+            form.append("emergencyContact", emrCont);
+
+            const sendAJAX = (empDetails,jwtToken) => {
+                $.ajax({
+                    method: "PUT",
+                    url : "http://localhost:8080/shoes/employee/update/"+ updateEmpCode,
+                    processData: false,
+                    mimeType: "multipart/form-data",
+                    contentType: false,
+                    data: form,
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
+                    },
+                    success: function(data) {
+                        $("#employee_Table").empty();
+                        getAllEmployees()
+                        swalWithBootstrapButtons.fire({
+                            title: "Employee Update Success !",
+                            icon: "success"
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        alert("Failed");
+                    }
+                });
+            };
+            sendAJAX(form, localStorage.getItem("jwtToken"));
+
+        } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire({
+                title: "Employee Update Cancelled !",
+                icon: "error"
+            });
+        }
+    });
+
+
+
+
 
 })
 
 // Delete Employee
 $('#employeeDeleteBtn').on('click',()=>{
-    var deleteEmpId = $('#employeeSearchTxt').val();
+    var deleteEmpId = $('#employeeCodeTxt').val();
     var deleteEmpMail = $('#mailTxt').val();
 
-    $.ajax({
-        type: "DELETE",
-        url: "http://localhost:8080/shoes/employee/delete/"+ deleteEmpMail +"/"+deleteEmpId,
-        contentType: "application/json",
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success m-1",
+            cancelButton: "btn btn-danger"
         },
-        success: function(data) {
-            $("#employee_Table").empty();
-            getAllEmployees()
-            console.log(data)
-            alert("success")
-        },
-        error: function(xhr, status, error) {
-            alert("Failed");
+        buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+        title: "Do you want to Delete this Item ?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, Delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            $.ajax({
+                type: "DELETE",
+                url: "http://localhost:8080/shoes/employee/delete/"+ deleteEmpMail +"/"+deleteEmpId,
+                contentType: "application/json",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+                },
+                success: function(data) {
+                    $("#employee_Table").empty();
+                    getAllEmployees()
+                    console.log(data)
+
+                    swalWithBootstrapButtons.fire({
+                        title: "Employee Delete Success !",
+                        icon: "success"
+                    });
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        title: "Sorry Sir !!",
+                        text:  " Your account does not have permission to delete the Employee details!",
+                        icon: "error"
+                    });
+                }
+            });
+
+        } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire({
+                title: "Employee Delete Cancelled !",
+                icon: "error"
+            });
         }
     });
+
 
 })
 
