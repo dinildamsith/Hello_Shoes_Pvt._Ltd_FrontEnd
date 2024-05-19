@@ -1,4 +1,4 @@
-// Pop Up window Animations And Popup Control
+//------------------------------------------ Pop Up window Animations And Popup Control
 
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -45,3 +45,26 @@ window.onclick = function(event) {
 var currentDate = new Date();
 var formattedDate = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1).toString().padStart(2, '0') + '-' + currentDate.getDate().toString().padStart(2, '0');
 document.getElementById('returnDateTxt').value = formattedDate;
+
+// Next Return Id Set
+function returnIdSet(){
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/shoes/order/returnNextId",
+        contentType: "application/json",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+        },
+        success: function(data) {
+            $('#returnIdTxt').val(data)
+        },
+        error: function(xhr, status, error) {
+            alert("Failed");
+        }
+    });
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    returnIdSet();
+});
