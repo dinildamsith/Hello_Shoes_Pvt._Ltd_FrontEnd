@@ -16,5 +16,6 @@ export class OrderModel{
         this.buyItem = buyItem;
         this.employeeEntity = employeeEntity;
         this.returnEntity = returnEntity;
+
     }
 }

@@ -65,6 +65,44 @@ function returnIdSet(){
 }
 
 
+// Return Order Code Type After Set Order Details
+$('#returnOrderCodeTxt').on('input', () => {
+    let returnOrderId = $('#returnOrderCodeTxt').val();
+
+    if (returnOrderId !== null && returnOrderId !== "") { // Check if returnOrderId is not null and not an empty string
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/shoes/order/searchOrder/"+returnOrderId,
+            contentType: "application/json",
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+            },
+            success: function(data) {
+                if (!data){
+                    console.log("")
+                }else{
+                    $('#orderBuyDateTxt').val(data.purchaseDate)
+                    $('#itemCodeTxt').val(data.buyItem[0].itemCode)
+                    $('#itemSizeTxt').val(data.size)
+                    $('#qtyTxt').val(data.qty)
+                    $('#orderTotalTxt').val(data.total)
+                    console.log(data)
+                }
+
+            },
+            error: function(xhr, status, error) {
+                alert("Failed");
+            }
+        });
+
+    }
+
+
+});
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     returnIdSet();
 });
