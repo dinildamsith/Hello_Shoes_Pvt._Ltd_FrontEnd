@@ -94,7 +94,7 @@
                         <div class="form-group">
                             <label for="returnOrderCodeTxt" class="text-black fw-bold ">Return Order Code</label>
                             <div class="search-container">
-                                <input type="text" class="form-control fw-bold border border-1  fw-bold " id="returnOrderCodeTxt" placeholder="" />
+                                <input class="form-control fw-bold border border-1  fw-bold " id="returnOrderCodeTxt" placeholder=""  />
 
                             </div>
                         </div>
@@ -122,6 +122,16 @@
 
                     <div class="col-12 col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6  mt-3">
                         <div class="form-group">
+                            <label for="itemDescTxt" class="text-black fw-bold ">Item Description</label>
+                            <div class="search-container">
+                                <input type="text" class="form-control fw-bold border border-1  fw-bold " id="itemDescTxt" placeholder="" disabled/>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3  mt-3">
+                        <div class="form-group">
                             <label for="itemSizeTxt" class="text-black fw-bold ">Size</label>
                             <div class="search-container">
                                 <input type="text" class="form-control fw-bold border border-1  fw-bold " id="itemSizeTxt" placeholder="" disabled/>
@@ -130,7 +140,7 @@
                         </div>
                     </div>
 
-                    <div class="col-12 col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6  mt-3">
+                    <div class="col-12 col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3  mt-3">
                         <div class="form-group">
                             <label for="qtyTxt" class="text-black fw-bold ">Quantity</label>
                             <div class="search-container">
@@ -170,7 +180,7 @@
 
 </div>
 
-
+<script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../Controller/OrderDetailsController.js" type="module"></script>
 <script src="../Controller/OrderReturnPopup.js" type="module"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

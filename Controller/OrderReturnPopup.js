@@ -1,6 +1,8 @@
 //------------------------------------------ Pop Up window Animations And Popup Control
 
 // Get the modal
+import {ReturnModel} from "../Model/ReturnModel.js";
+
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
@@ -85,6 +87,7 @@ $('#returnOrderCodeTxt').on('input', () => {
                     $('#orderBuyDateTxt').val(data.purchaseDate)
                     $('#itemCodeTxt').val(data.buyItem[0].itemCode)
                     $('#itemSizeTxt').val(data.size)
+                    $('#itemDescTxt').val(data.itemDesc)
                     $('#qtyTxt').val(data.qty)
                     $('#orderTotalTxt').val(data.total)
                     console.log(data)
@@ -102,6 +105,81 @@ $('#returnOrderCodeTxt').on('input', () => {
 });
 
 
+$('#orderReturnConformBtn').on('click', ()=>{
+
+    let returnId = $('#returnIdTxt').val();
+    let itemCode = $('#itemCodeTxt').val();
+    let itemDesc = $('#itemDescTxt').val();
+    let itemSize = $('#itemSizeTxt').val();
+    let returnOrderCode = $('#returnOrderCodeTxt').val();
+    let qty = $('#qtyTxt').val();
+    let returnDate = $('#returnDateTxt').val();
+
+
+    if (validate(returnOrderCode,"Return Order Coder")){
+
+        const raw = JSON.stringify({
+            "returnId": returnId,
+            "itemId": itemCode,
+            "itemDes": itemDesc,
+            "size": itemSize,
+            "qty": qty,
+            "returnDate": returnDate+"T00:00:00",
+            "orderEntity": {
+                "orderCode": returnOrderCode
+            }
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/shoes/order/return",
+            contentType: "application/json",
+            data: raw,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+            },
+            success: function(data) {
+
+                if (data === 'Sorry Sir You Can order Return One Chanes Only' ||
+                    data === 'Sorry Customer This Order Can\'t return you item return last day missing !!1') {
+                    Swal.fire({
+                        title: data,
+                        icon: "info"
+                    });
+                } else if (data === 'Order Returned') {
+                    Swal.fire({
+                        title: data,
+                        icon: "success"
+                    });
+                }
+
+            },
+            error: function(xhr, status, error) {
+
+                alert("Failed");
+            }
+        });
+
+
+
+    }
+
+
+
+})
+
+
+// Validation Function
+function validate(value, field_name){
+    if (!value){
+        Swal.fire({
+            icon: 'warning',
+            title: `Please enter the ${field_name}!`
+        });
+        return false;
+    }
+    return true;
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     returnIdSet();
