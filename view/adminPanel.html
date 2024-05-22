@@ -101,7 +101,7 @@
 </div>
 
 <div class="container-fluid dashBordSet">
-    <div class="row">
+    <div class="row ">
 
         <div class="col-12 col-xxl-10 col-xl-10 col-lg-9 col-md-8 col-sm-7">
             <h1>Good Morning</h1>
@@ -115,32 +115,36 @@
             <h2>Welcome Hello Shoes Management System</h2>
         </div>
 
-        <div class="col-11 col-xxl-4 col-xl-3 col-lg-3 col-md-4 col-sm-5                    mt-5 bg-shade rounded-4 h-200">
+        <div class="col-11 col-xxl-4 col-xl-3 col-lg-3 col-md-4 col-sm-5                    mt-5 bg-shade rounded-4 h-200" id="adminDashBordDate">
             <div class="mt-4">
-                <label for="birthday" class="mt-0 fw-bold text-black">Select Date:</label>
-                <input type="date" id="birthday" name="birthday">
+                <div class="form-group">
+                    <label for="selectDate" class="text-black fw-bold">Select Date</label>
+                    <div class="search-container">
+                        <input type="date" class="form-control border border-1  fw-bold" id="selectDate" name="">
+                    </div>
+                </div>
             </div>
 
         </div>
 
-        <div class="col-11 col-xxl-3 col-xl-4 col-lg-4 col-md-6  col-sm-6             h-100c  rounded-4 d-flex align-items-center mt-5 ml-1">
-            <div class="row mt-5">
+        <div class="col-11 col-xxl-3 col-xl-4 col-lg-4 col-md-6  col-sm-6  adminPanelDetails           h-100c  rounded-4 d-flex align-items-center mt-5 ml-1 adminPanelDetails">
+            <div class="row mt-5 adminPanelDetails">
 
-                <div class="mt-4"></div>
+                <div class="mt-4 adminPanelDetails"></div>
 
-                <div class="col-12 col-xxl-12 h-100c bg-shade rounded-4 d-flex align-items-center mt-5 ml-1">
-                    <img src="../img/totalSale.png" class="dashbordImagecss mt-4 mr-3" alt="">
+                <div class="col-12 col-xxl-12 h-100c bg-shade rounded-4 d-flex align-items-center mt-5 ml-1 adminPanelDetails">
+                    <img src="../img/totalSale.png" class="dashbordImagecss adminPanelDetails mt-4 mr-3" alt="">
                     <div>
-                        <h2 class="text-center">Total Sale</h2>
-                        <h3 class="text-center">00</h3>
+                        <h2 class="text-center adminPanelDetails">Total Sale</h2>
+                        <h3 class="text-center adminPanelDetails" id="totalSaleLbl">00</h3>
                     </div>
                 </div>
 
-                <div class="col-12 col-xxl-12 h-100c bg-shade rounded-4 d-flex align-items-center mt-2 ml-1">
-                    <img src="../img/profit.png" class="dashbordImagecss mt-4 mr-3" alt="">
+                <div class="col-12 col-xxl-12 h-100c bg-shade rounded-4  adminPanelDetails d-flex align-items-center mt-2 ml-1">
+                    <img src="../img/profit.png" class="dashbordImagecss adminPanelDetails mt-4 mr-3" alt="">
                     <div>
-                        <h2 class="text-center">Total Profit</h2>
-                        <h3 class="text-center">00</h3>
+                        <h2 class="text-center adminPanelDetails">Total Profit</h2>
+                        <h3 class="text-center adminPanelDetails">00</h3>
                     </div>
                 </div>
 
@@ -150,15 +154,18 @@
         </div>
 
 
-        <div class="col-11 col-xxl-4 col-xl-4 col-lg-4 col-md-10 col-sm-11  h-511 bg-shade rounded-4 d-flex flex-column justify-content-start align-items-center mt-6 ml-1 mt-8">
-            <h2 class="text-center">Most Sale Item</h2>
-            <img src="../img/Shoe.png" alt="" class="mt-5" style="max-width: 80%;">
-            <h2 class="text-center mt-5">Most Sale Item Qty</h2>
-            <h2 class="text-center">00</h2>
+
+
+        <div class="col-11 col-xxl-4 col-xl-4 col-lg-4 col-md-10 col-sm-11 h-511 bg-shade rounded-4 d-flex flex-column justify-content-start align-items-center mt-6 ml-1 mt-8 adminPanelDetails" id="xx" >
+            <h2 class="text-center adminPanelDetails">Most Sale Item</h2>
+            <img src="../img/Shoe.png" alt="Shoe" class="mt-5 adminPanelDetails" style="max-width: 80%;">
+            <h2 class="text-center mt-5 adminPanelDetails">Most Sale Item Qty</h2>
+            <h2 class="text-center adminPanelDetails">00</h2>
         </div>
 
-        <div class="col-11 d-flex justify-content-center mt-5">
-            <img src="../img/GroupCircle.png" alt=""class="img-fluid">
+
+        <div class="col-11 d-flex justify-content-center mb-5" >
+            <img src="../img/GroupCircle.png" alt=""class="img-fluid  " id="userDashBord" style="margin-top: -6rem ;width: 50%">
         </div>
 
 
@@ -168,7 +175,9 @@
 
 
 
-
+<script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../bootstrap-5.3.1-dist/lib/jquery.min.js"></script>
 <script src="../Controller/mobileNavJs.js"></script>
+<script src="../Controller/DashBordController.js" type="module"></script>
 </body>
 </html>
