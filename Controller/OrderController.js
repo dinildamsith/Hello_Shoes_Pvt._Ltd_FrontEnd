@@ -123,6 +123,41 @@ $('#purchaseDateTxt').val(formattedDate);
 
 
 
+
+// Add Cart
+let total = 0;
+$('#addCartBtn').on('click', ()=>{
+    var itemCode = $('#itemCodeOption').val();
+    var itemName = $('#itemDescriptionTxt').val();
+    var unitPrice = $("#unitPriceTxt").val();
+    var qty = $('#quantityTxt').val();
+
+    var newRow = "<tr><th scope='row'>" + itemCode + "</th><td>" + itemName + "</td><td>" + unitPrice + "</td><td>" + qty + "</td></tr>";
+    $("#cart_Table").append(newRow);
+
+    // Update the total
+    total += unitPrice * qty;
+    $('#totalLabel').text("Rs "+total+".00")
+
+
+})
+
+
+var cashInput = document.getElementById("cashTxt");// Get the input element with the id "cash"
+
+cashInput.addEventListener("input", (event) => {// Add an input event listener to the input element
+    let cash = $("#cashTxt").val(); // Parse the cash value as a float
+    console.log(cash)
+    let balance = cash - total;
+    console.log(balance)
+
+    // Update the content of the "balance" element
+    $("#balanceLbl").text("Rs " +balance +".00");
+});
+
+
+
+
 // Order Purchase
 $('#orderBuyBtn').on('click', ()=>{
 
