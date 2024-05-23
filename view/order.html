@@ -241,7 +241,7 @@
 
 
 
-                    <button type="button" class="btn btn-success col-12  col-xxl-6 col-xl-6 col-md-6 col-sm-6 col-lg-12 mt-4">Add Cart</button>
+                    <button type="button" class="btn btn-success col-12  col-xxl-6 col-xl-6 col-md-6 col-sm-6 col-lg-12 mt-4" id="addCartBtn">Add Cart</button>
          </div>
 
 
@@ -257,7 +257,7 @@
 
                     </tr>
                     </thead>
-                    <tbody id="customer_Table">
+                    <tbody id="cart_Table">
 
                     </tbody>
                 </table>
@@ -269,7 +269,7 @@
 
                     <h1 class="text-center">Order Details</h1>
                     <h3 class="mt-5 text-center">Total Price : <label id="totalLabel">Rs.000.00</label></h3>
-                    <h3 class="text-center">Balance     : <label>Rs.000.00</label></h3>
+                    <h3 class="text-center">Balance     : <label id="balanceLbl">Rs.000.00</label></h3>
 
                 </div>
 
@@ -281,7 +281,7 @@
                         <label for="paymentMethod" class="text-black fw-bold">Payment Method</label>
                         <div class="search-container">
                             <select class="form-select border border-1  fw-bold" aria-label="Default select example" id="paymentMethod">
-                                <option selected>Select Method</option>
+                                <option value="">Select Method</option>
                                 <option value="CREDITCARD">CREDIT CARD</option>
                                 <option value="CASH">CASH</option>
 
@@ -329,6 +329,7 @@
 </div>
 
 
+<script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../Controller/OrderController.js" type="module"></script>
 <script src="../Controller/mobileNavJs.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

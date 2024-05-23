@@ -4,10 +4,10 @@ import {StockModel} from "../Model/StockModel.js";
 
 
 var jwtToken = localStorage.getItem("jwtToken")
-document.getElementById('itemImageSelect').addEventListener('change', displaySelectedImage);
 document.addEventListener('DOMContentLoaded', function() {
     const jwtToken = localStorage.getItem("jwtToken");
     getSuppliersIds(jwtToken)
+
 
 });
 
@@ -36,9 +36,12 @@ const getSuppliersIds = (jwtToken) => {
     });
 };
 
+document.getElementById('itemImageSelect').addEventListener('change', displaySelectedImage);
 // Select Image File Get
-var image = "";
+var image = '';
 function displaySelectedImage(event) {
+
+
     const selectedFile = event.target.files[0];
     if (!selectedFile) return;
     if (!selectedFile.type.startsWith('image/')) {
@@ -46,13 +49,21 @@ function displaySelectedImage(event) {
         return;
     }
     const reader = new FileReader();
-    reader.onload = e => console.log('Selected image data URL:', e.target.result);
+    reader.onload = e => image=e.target.result
+
     reader.readAsDataURL(selectedFile);
-    image =selectedFile;
+
+
+
 }
 
 // Item Save
 $('#itemBuyBtn').on('click', ()=>{
+
+
+
+
+
     var  itemId = $('#itemIdTxt').val();
     var  itemDesc = $('#itemDescTxt').val();
     var itemType = $('#itemTypeOpation').val()
@@ -66,8 +77,8 @@ $('#itemBuyBtn').on('click', ()=>{
     var supId = $('#supplierCodeOption').val();
     var expectedProfit = $('#expectedProfitTxt').val();
 
-    
-    if(validate(itemId,"Item Id") && validate(itemDesc,"Item Decription") && validate(itemType,"Item Type") && validate(occasionType,"Occasion Type") && validate(verities,"Verities") && validate(category,"Category") && validate(size,"Size") && validate(qty,"Quantity") && validate(buyPrice,"Buy Price") && validate(salePrice,"Sale Price") && validate(supId,"Supplier Id") && validate(expectedProfit,"Expected Profit") && validate(image,"Item Image")){
+
+    if(validate(itemId,"Item Id") && validate(itemDesc,"Item Decription") && validate(itemType,"Item Type") && validate(occasionType,"Occasion Type") && validate(verities,"Verities") && validate(category,"Category") && validate(size,"Size") && validate(qty,"Quantity") && validate(buyPrice,"Buy Price") && validate(salePrice,"Sale Price") && validate(supId,"Supplier Id") && validate(expectedProfit,"Expected Profit") ){
 
         var form = new FormData();
         form.append("item_code", itemId);
@@ -294,6 +305,8 @@ $('#itemSearchBtn').on('click', ()=>{
                 xhr.setRequestHeader("Authorization", "Bearer " + jwtToken);
             },
             success: function(data) {
+                const imageElement = document.getElementById('selectImage');
+                imageElement.src = data.itemPic;
                 $('#itemIdTxt').val(data.itemCode);
                 $('#itemDescTxt').val(data.itemDesc);
                 $('#itemCategory').val(data.category);
@@ -416,3 +429,5 @@ document.addEventListener('DOMContentLoaded', function() {
     getAllItemSetTabelSendAJAX(jwtToken)
 
 });
+
+

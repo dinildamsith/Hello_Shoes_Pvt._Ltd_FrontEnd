@@ -3,8 +3,10 @@ import {EmployeeModel} from "../Model/EmployeeModel.js";
 
 // Select Image Convert Base 64
 document.getElementById('empSelectImage').addEventListener('change', displaySelectedImage);
-var image = "";
+var image = '';
 function displaySelectedImage(event) {
+
+
     const selectedFile = event.target.files[0];
     if (!selectedFile) return;
     if (!selectedFile.type.startsWith('image/')) {
@@ -12,9 +14,11 @@ function displaySelectedImage(event) {
         return;
     }
     const reader = new FileReader();
-    reader.onload = e => console.log('Selected image data URL:', e.target.result);
+    reader.onload = e => image=e.target.result
+
     reader.readAsDataURL(selectedFile);
-    image =selectedFile;
+
+
 }
 
 // Save Employee
@@ -116,7 +120,9 @@ $('#employeeSearchBtn').on('click', ()=>{
                             icon: "info"
                         });
                     }
+                    const imageElement = document.getElementById('selectEmpImage');
 
+                    imageElement.src = data.employeePic;
                     $('#employeeCodeTxt').val(data.employeeCode);
                     $('#employeeNameTxt').val(data.employeeName);
                     $('#employeeGenderOption').val(data.gender);
