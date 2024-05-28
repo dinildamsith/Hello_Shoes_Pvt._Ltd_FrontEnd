@@ -72,13 +72,14 @@ $('#custUpdateBtn').on('click', ()=>{
     var level = $('#custLevel').val();
 
 
+
     if (validate(customerId,"Customer Id") && validate(customerName,"Customer Name") && validate(contact,"Contact") && validate(mail,"Mail") && validate(gender,"Gender") && validate(address1,"Address 1") && validate(address2,"Address 2") && validate(bod,"Birthday") && validate(joinDate,"Join Date") && validate(level,"Level")){
 
         var customerDetails = new CustomerModel(customerId,customerName,gender,joinDate,level,bod,address1,address2,contact,mail);
 
         var customerDetailsJson = JSON.stringify(customerDetails);
 
-
+        console.log(customerDetailsJson)
         const sendAJAX = (customerDetails,jwtToken) => {
             $.ajax({
                 type: "PUT",
@@ -97,6 +98,9 @@ $('#custUpdateBtn').on('click', ()=>{
                         title: "Customer Update Success",
                         icon: "info"
                     });
+                    $('#custUpdateBtn').css('display','none')
+                    $('#custDeleteBtn').css('display','none')
+                    $('#customerSaveBtn').css('display','block')
                 },
                 error: function(xhr, status, error) {
                     alert("Failed");
@@ -211,6 +215,10 @@ $('#customerSearchBtn').on('click', ()=>{
                         $("#custLevel").val(data.level);
                         $("#totalPoints").val(data.totalPoints);
                         $("#recentPurchaseDate").val(data.recentPurchaseDate);
+
+                        $('#custUpdateBtn').css('display','block')
+                        $('#custDeleteBtn').css('display','block')
+                        $('#customerSaveBtn').css('display','none')
                     }
                 },
                 error: function(xhr, status, error) {
@@ -266,6 +274,10 @@ $("#customer_Table").on("click","tr", function (){
     $("#recentPurchaseDate").val(data.eq(10).text());
 
 
+    $('#custUpdateBtn').css('display','block')
+    $('#custDeleteBtn').css('display','block')
+    $('#customerSaveBtn').css('display','none')
+
  
 });
 
@@ -306,6 +318,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const jwtToken = localStorage.getItem("jwtToken");
     getAllCustomerSendAJAX(jwtToken)
     $('#custLevel').val('BRONZE')
+
+
+    $('#custUpdateBtn').css('display','none')
+    $('#custDeleteBtn').css('display','none')
 
 });
 
