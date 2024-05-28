@@ -4,7 +4,7 @@ $('#selectDate').on('change', ()=>{
 
     $.ajax({
         type: "GET",
-        url : "http://localhost:8080/shoes/order/getTotalSale/" + selectDate,
+        url : "http://localhost:8080/shoes/order/getTotalSale/" + selectDate +" 05:30:00.000000",
         processData: false,
         mimeType: "multipart/form-data",
         contentType: false,
@@ -71,11 +71,13 @@ $(document).ready(function() {
 
     if (roleFromToken === "ROLE_ADMIN") {
         $('#userDashBord').css('display', 'none');
+        $('#accName').val("Admin")
 
     } else if (roleFromToken === "ROLE_USER") {
         $('#adminDashBordDate').css('display', 'none');
         $('.adminPanelDetails').css('display', 'none');
         $('#xx').css('height', '0');
+        $('#accName').val("User")
 
 
 
