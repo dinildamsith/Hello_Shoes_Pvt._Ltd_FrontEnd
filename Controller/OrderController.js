@@ -79,8 +79,7 @@ $('#itemCodeOption').change(function() {
         },
         success: function(data) {
             data.forEach(items => {
-                console.log(items)
-                $("#sizeOption").empty();
+
                 $('#sizeOption').append($('<option></option>').attr('value', items).text(items));
             });
         },
@@ -175,52 +174,59 @@ $('#orderBuyBtn').on('click', ()=>{
     var payMethod = $('#paymentMethod').val()
 
 
-    var orderData = JSON.stringify({
-        "orderCode": orderId,
-        "purchaseDate": date,
-        "customerName": customerName,
-        "itemDesc": itemName,
-        "size" : parseInt(size),
-        "unitPrice": unitPrice,
-        "qty": parseInt(qty),
-        "paymentMethod": payMethod,
-        "cashierName": empName,
-        "customerDetails": {
-          "customerCode": customerCode
-        },
-        "buyItem": [
-          {
-            "itemCode": itemCode
-          }
-        ],
-        "order": [
-          {
-            "orderCode": orderId
-          }
-        ],
-        "employeeEntity": {
-          "employeeCode": empId
-        }
-      });
-      
+    if (validate(orderId,"Order Id") && validate(date,"Date") && validate(customerCode,"Customer Code") && validate(customerName,"Customer Name") && validate(itemCode,"Item Code") && validate(itemName,"Item Name") && validate(size,"Size") && validate(qty,"Quantity") && validate(unitPrice,"Unit Price") && validate(empId,"Employee Id") && validate(empName,"Employee Name")&& validate(payMethod,"Select Payment Method")){
 
 
-    $.ajax({
-        type: "POST",
-        url: "http://localhost:8080/shoes/order/save",
-        contentType: "application/json",
-        data: orderData,
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
-        },
-        success: function(data) {
-            generateNewOrderId()
-            alert("Success");
-        },
-        error: function(xhr, status, error) {
-            alert("Failed");
-        }
-    });
+        var orderData = JSON.stringify({
+            "orderCode": orderId,
+            "purchaseDate": date,
+            "customerName": customerName,
+            "itemDesc": itemName,
+            "size" : parseInt(size),
+            "unitPrice": unitPrice,
+            "qty": parseInt(qty),
+            "paymentMethod": payMethod,
+            "cashierName": empName,
+            "customerDetails": {
+                "customerCode": customerCode
+            },
+            "buyItem": [
+                {
+                    "itemCode": itemCode
+                }
+            ],
+            "order": [
+                {
+                    "orderCode": orderId
+                }
+            ],
+            "employeeEntity": {
+                "employeeCode": empId
+            }
+        });
+
+
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/shoes/order/save",
+            contentType: "application/json",
+            data: orderData,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+            },
+            success: function(data) {
+                generateNewOrderId()
+                alert("Success");
+            },
+            error: function(xhr, status, error) {
+                alert("Failed");
+            }
+        });
+
+
+    }
+
 
 })
 
