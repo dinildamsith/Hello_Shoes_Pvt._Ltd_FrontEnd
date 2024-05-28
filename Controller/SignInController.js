@@ -22,6 +22,8 @@ $("#loginBtn").on('click', () => {
                 data: loginDetails,
                 success: function(data) {
                     resolve(data); // Resolve the promise with the received data
+
+
                 },
                 error: function(xhr, status, error) {
                     reject(error); // Reject the promise with the error
@@ -35,7 +37,6 @@ $("#loginBtn").on('click', () => {
         .then(token => {
             localStorage.setItem("jwtToken",token)
             window.location.href = '../view/adminPanel.html';
-
         })
         .catch(error => {
 
@@ -45,5 +46,9 @@ $("#loginBtn").on('click', () => {
 
 
 });
+
+
+
+
 
 

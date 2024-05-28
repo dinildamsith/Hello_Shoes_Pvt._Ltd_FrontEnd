@@ -258,6 +258,8 @@ $('#itemDeleteBtn').on('click', ()=>{
                                 title: "Item Delete Success !",
                                 icon: "success"
                             });
+
+
                         },
                         error: function(xhr, status, error) {
                             Swal.fire({
@@ -330,7 +332,10 @@ $('#itemSearchBtn').on('click', ()=>{
                 $('#statusTxt').val(data.status);
                 $('#profitMarginTxt').val(data.profitMargin);
 
-
+                //
+                // $('#itemUpdateBtn').css('display','block')
+                // $('#itemDeleteBtn').css('display','block')
+                // $('#itemBuyBtn').css('display','none')
 
 
             },
@@ -427,6 +432,9 @@ function validate(value, field_name){
 document.addEventListener('DOMContentLoaded', function() {
     const jwtToken = localStorage.getItem("jwtToken");
     getAllItemSetTabelSendAJAX(jwtToken)
+    $('#itemUpdateBtn').css('display','none')
+    $('#itemDeleteBtn').css('display','none')
+
 
 });
 
