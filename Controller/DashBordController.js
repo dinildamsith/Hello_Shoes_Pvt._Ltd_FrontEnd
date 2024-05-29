@@ -1,3 +1,5 @@
+import {employeeWiseGetAllOrder, getAllOrder} from "./OrderDetailsController.js";
+
 $('#selectDate').on('change', ()=>{
 
     let selectDate = $('#selectDate').val();
@@ -53,13 +55,25 @@ function parseJwt(token) {
 }
 
 function getRoleFromToken(token) {
-    const decodedToken = parseJwt(token);
+    let decodedToken = parseJwt(token);
     if (decodedToken && decodedToken.role) {
         const roles = decodedToken.role;
+
+
         if (roles.length > 0) {
             const authority = roles[0].authority;
+
+
+            if (authority === "ROLE_USER"){
+                employeeWiseGetAllOrder(decodedToken.sub)
+            }else{
+                getAllOrder();
+            }
+
             return authority;
+
         }
+
     }
     return null;
 }
@@ -71,11 +85,13 @@ $(document).ready(function() {
 
     if (roleFromToken === "ROLE_ADMIN") {
         $('#userDashBord').css('display', 'none');
+        $('#orderBranchSelect').show();
         $('#accName').val("Admin")
 
     } else if (roleFromToken === "ROLE_USER") {
         $('#adminDashBordDate').css('display', 'none');
         $('.adminPanelDetails').css('display', 'none');
+        $('#orderBranchSelect').css('display', 'none');
         $('#xx').css('height', '0');
         $('#accName').val("User")
 
