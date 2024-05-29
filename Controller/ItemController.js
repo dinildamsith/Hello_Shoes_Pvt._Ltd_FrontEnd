@@ -349,6 +349,28 @@ $('#itemSearchBtn').on('click', ()=>{
 
 })
 
+function checkHaveItemQtyAndSetNotify(){
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/shoes/stock/sendInfoItemQty",
+        contentType: "application/json",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
+        },
+        success: function(data) {
+            data.forEach(items => {
+                toastr["warning"](items);
+            });
+
+        },
+        error: function(xhr, status, error) {
+            alert("Failed");
+        }
+    });
+
+}
+
 
 
 //item Table Set Data
@@ -434,8 +456,7 @@ document.addEventListener('DOMContentLoaded', function() {
     getAllItemSetTabelSendAJAX(jwtToken)
     $('#itemUpdateBtn').css('display','none')
     $('#itemDeleteBtn').css('display','none')
-
-
+    checkHaveItemQtyAndSetNotify()
 });
 
 

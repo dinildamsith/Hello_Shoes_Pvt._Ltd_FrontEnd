@@ -4,3 +4,7 @@
     font-weight: bold; /* Set the font weight to bold */
 }
 
+.toast-message {
+    color: black !important;
+    font-weight: bold;
+}
