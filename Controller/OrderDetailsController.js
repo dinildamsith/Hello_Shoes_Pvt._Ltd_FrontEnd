@@ -41,6 +41,7 @@ export function getAllOrder() {
                 data.forEach(order => {
                     var newRow = "<tr><th scope='row'>" + order.orderCode + "</th><td>" + order.purchaseDate + "</td><td>" + order.customerDetails.customerCode + "</td><td>" + order.buyItem[0].itemCode + "</td><td>" + order.size + "</td><td>" + order.unitPrice + "</td><td>" + order.qty + "</td><td>" + order.total + "</td><td>" + order.paymentMethod + "</td><td>" + order.orderStatus + "</td><td>" + order.employeeEntity.employeeCode + "</td></tr>";
                     $("#orderDetailsTable").append(newRow);
+
                 });
 
             },

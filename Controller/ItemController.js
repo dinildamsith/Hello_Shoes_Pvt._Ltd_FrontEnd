@@ -359,8 +359,8 @@ function checkHaveItemQtyAndSetNotify(){
             xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
         },
         success: function(data) {
-            data.forEach(items => {
-                toastr["warning"](items);
+            data.forEach(massage => {
+                toastr["warning"](massage);
             });
 
         },
