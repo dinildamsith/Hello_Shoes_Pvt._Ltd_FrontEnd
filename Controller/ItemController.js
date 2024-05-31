@@ -291,10 +291,10 @@ $('#itemDeleteBtn').on('click', ()=>{
 $('#itemSearchBtn').on('click', ()=>{
     var  itemId = $('#itemSearchTxt').val();
 
-    $('#itemTypeOpation').prop('disabled', true);
-    $('#occasionOpation').prop('disabled', true);
-    $('#veritiesOpation').prop('disabled', true);
-    $('#quantityTxt').prop('disabled', true);
+    // $('#itemTypeOpation').prop('disabled', true);
+    // $('#occasionOpation').prop('disabled', true);
+    // $('#veritiesOpation').prop('disabled', true);
+    // $('#quantityTxt').prop('disabled', true);
 
 
     if (validate(itemId,"Search Item Id")){
@@ -454,8 +454,8 @@ function validate(value, field_name){
 document.addEventListener('DOMContentLoaded', function() {
     const jwtToken = localStorage.getItem("jwtToken");
     getAllItemSetTabelSendAJAX(jwtToken)
-    $('#itemUpdateBtn').css('display','none')
-    $('#itemDeleteBtn').css('display','none')
+    // $('#itemUpdateBtn').css('display','none')
+    // $('#itemDeleteBtn').css('display','none')
     checkHaveItemQtyAndSetNotify()
 });
 

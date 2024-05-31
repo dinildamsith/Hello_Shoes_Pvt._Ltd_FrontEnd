@@ -56,13 +56,20 @@ $('#selectDate').on('change', ()=>{
         },
         success: function(data) {
 
-            $('#mostSaleImg').attr('src', data);
+            if (data === ''){
+                Swal.fire({
+                    icon: 'info',
+                    title: `This Select Date Have No Orders!`
+                });
 
-            console.log(data)
+            }else{
+                $('#mostSaleImg').attr('src', data);
+            }
+
 
         },
         error: function(xhr, status, error) {
-            alert("Failedeeeeeeeeeeee");
+
         }
     });
 

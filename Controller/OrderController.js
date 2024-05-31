@@ -216,8 +216,31 @@ $('#orderBuyBtn').on('click', ()=>{
                 xhr.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("jwtToken"));
             },
             success: function(data) {
+                console.log(data)
                 generateNewOrderId()
-                alert("Success");
+                if (data === 'Sorry This Not Available This Quantity in stock'){
+
+                    Swal.fire({
+                        icon: 'info',
+                        title: data
+                    });
+
+                }else if ( data === 'This Item Quantity Unavailable Stock'){
+
+                    Swal.fire({
+                        icon: 'info',
+                        title: data
+                    });
+
+                }else if (data === 'Order Placed'){
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: data
+                    });
+
+                }
+
             },
             error: function(xhr, status, error) {
                 alert("Failed");
