@@ -55,7 +55,14 @@ $('#supplierSearchBtn').on('click', ()=>{
     var searchSupId = $('#supplierSearchTxt').val();
 
 
+
+
+
     if (validate(searchSupId,"Search Supplier Code")){
+
+        $('#supplierDeleteBtn').css('display', 'block');
+        $('#supplierUpdateBtn').css('display', 'block');
+        $('#supplierSaveBtn').css('display', 'none');
 
         $.ajax({
             type: "GET",
@@ -83,6 +90,8 @@ $('#supplierSearchBtn').on('click', ()=>{
                     $('#contact2Txt').val(data.contact2);
                     $('#mailTxt').val(data.email);
                 }
+
+
 
             },
             error: function(xhr, status, error) {
@@ -136,7 +145,7 @@ $('#supplierUpdateBtn').on('click', ()=>{
             if (result.isConfirmed) {
 
 
-                var  supplierDetails = new SupplierModel(supplierName,category,address1,address2,address3,contact1,contact2,mail);
+                var  supplierDetails = new SupplierModel(updateSupplierCode,supplierName,category,address1,address2,address3,contact1,contact2,mail);
                 var supplierDetailsJson = JSON.stringify(supplierDetails);
 
                 $.ajax({
@@ -155,6 +164,10 @@ $('#supplierUpdateBtn').on('click', ()=>{
                             title: "Supplier Update Success !",
                             icon: "success"
                         });
+
+                        $('#supplierDeleteBtn').css('display', 'none');
+                        $('#supplierUpdateBtn').css('display', 'none');
+                        $('#supplierSaveBtn').css('display', 'block');
                     },
                     error: function(xhr, status, error) {
                         Swal.fire({
@@ -222,6 +235,9 @@ $('#supplierDeleteBtn').on('click', ()=>{
                             title: "Suppler Delete Success !",
                             icon: "success"
                         });
+                        $('#supplierDeleteBtn').css('display', 'none');
+                        $('#supplierUpdateBtn').css('display', 'none');
+                        $('#supplierSaveBtn').css('display', 'block');
                     },
                     error: function(xhr, status, error) {
                         Swal.fire({
@@ -285,4 +301,7 @@ function validate(value, field_name){
 
 document.addEventListener('DOMContentLoaded', function() {
     getAllSupplier();
+    $('#supplierDeleteBtn').css('display', 'none');
+    $('#supplierUpdateBtn').css('display', 'none');
+
 });

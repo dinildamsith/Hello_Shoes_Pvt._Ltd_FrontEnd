@@ -317,7 +317,7 @@ function validate(value, field_name){
 document.addEventListener('DOMContentLoaded', function() {
     const jwtToken = localStorage.getItem("jwtToken");
     getAllCustomerSendAJAX(jwtToken)
-    $('#custLevel').val('BRONZE')
+    $('#custLevel').val('NEW')
 
 
     $('#custUpdateBtn').css('display','none')

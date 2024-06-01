@@ -135,6 +135,7 @@ $(document).ready(function() {
         $('#userDashBord').css('display', 'none');
         $('#orderBranchSelect').show();
         $('#accName').val("Admin")
+        $('#txtA_U').text("ADMIN")
 
     } else if (roleFromToken === "ROLE_USER") {
         $('#adminDashBordDate').css('display', 'none');
@@ -142,7 +143,7 @@ $(document).ready(function() {
         $('#orderBranchSelect').css('display', 'none');
         $('#xx').css('height', '0');
         $('#accName').val("User")
-
+        $('#txtA_U').text("USER")
 
 
     }

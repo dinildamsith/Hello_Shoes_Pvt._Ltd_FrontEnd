@@ -103,6 +103,9 @@ $('#employeeSearchBtn').on('click', ()=>{
 
     if (validate(searchEmpId,"Search Employee Id")){
 
+        $('#employeeUpdateBtn').css('display','block')
+        $('#employeeDeleteBtn').css('display','block')
+        $('#employeeSaveBtn').css('display','none')
 
         const sendAJAX = () => {
             $.ajax({
@@ -234,6 +237,9 @@ $('#employeeUpdateBtn').on('click', ()=>{
                                 title: "Employee Update Success !",
                                 icon: "success"
                             });
+                            $('#employeeUpdateBtn').css('display','none')
+                            $('#employeeDeleteBtn').css('display','none')
+                            $('#employeeSaveBtn').css('display','block')
                         },
                         error: function(xhr, status, error) {
                             alert("Failed");
@@ -298,6 +304,9 @@ $('#employeeDeleteBtn').on('click',()=>{
                             title: "Employee Delete Success !",
                             icon: "success"
                         });
+                        $('#employeeUpdateBtn').css('display','none')
+                        $('#employeeDeleteBtn').css('display','none')
+                        $('#employeeSaveBtn').css('display','block')
                     },
                     error: function(xhr, status, error) {
                         Swal.fire({
@@ -360,6 +369,10 @@ function validate(value, field_name){
 }
 
 
+
+
 document.addEventListener('DOMContentLoaded', function() {
    getAllEmployees();
+   $('#employeeUpdateBtn').css('display','none')
+    $('#employeeDeleteBtn').css('display','none')
 });

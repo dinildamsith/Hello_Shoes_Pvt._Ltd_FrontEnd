@@ -164,9 +164,9 @@
               <label for="employeeGenderOption" class="text-black fw-bold">Gender</label>
               <div class="search-container">
                 <select class="form-select border border-1  fw-bold" aria-label="Default select example" id="employeeGenderOption">
-                  <option selected>Select Gender</option>
-                  <option selected value="MALE">MALE</option>
-                  <option selected value="FEMALE">FEMALE</option>
+                  <option selected value="">Select Gender</option>
+                  <option  value="MALE">MALE</option>
+                  <option  value="FEMALE">FEMALE</option>
                 </select>
               </div>
             </div>
@@ -177,10 +177,10 @@
               <label for="empStatusOption" class="text-black fw-bold">Status</label>
               <div class="search-container">
                 <select class="form-select border border-1  fw-bold" aria-label="Default select example" id="empStatusOption">
-                  <option selected>Select Status</option>
-                  <option selected value="MARRIED">MARRIED</option>
-                  <option selected value="SINGLE">SINGLE</option>
-                  <option selected value="DIVORCED">DIVORCED</option>
+                  <option selected value="">Select Status</option>
+                  <option value="MARRIED">MARRIED</option>
+                  <option  value="SINGLE">SINGLE</option>
+                  <option  value="DIVORCED">DIVORCED</option>
                 </select>
               </div>
             </div>
@@ -191,8 +191,13 @@
             <div class="form-group">
               <label for="designationTxt" class="text-black fw-bold ">Designation</label>
               <div class="search-container">
-                <input type="text" class="form-control fw-bold border border-1  fw-bold " id="designationTxt" placeholder="" />
-
+                <select class="form-select border border-1  fw-bold" aria-label="Default select example" id="designationTxt">
+                  <option selected value="">Select Designation</option>
+                  <option  value="Manager">Manager</option>
+                  <option value="Senior Sales Assistant">Senior Sales Assistant</option>
+                  <option value="Accountant">Accountant</option>
+                  <option value="Sales Assistant">Sales Assistant</option>
+                </select>
               </div>
             </div>
           </div>
@@ -202,9 +207,9 @@
               <label for="roleOption" class="text-black fw-bold">Role</label>
               <div class="search-container">
                 <select class="form-select border border-1  fw-bold" aria-label="Default select example" id="roleOption">
-                  <option selected>Select Status</option>
-                  <option selected value="ADMIN">ADMIN</option>
-                  <option selected value="USER">USER</option>
+                  <option selected value="">Select Status</option>
+                  <option value="ADMIN">ADMIN</option>
+                  <option  value="USER">USER</option>
                 </select>
               </div>
             </div>
@@ -235,9 +240,9 @@
               <label for="branchOption" class="text-black fw-bold">Branch</label>
               <div class="search-container">
                 <select class="form-select border border-1  fw-bold" aria-label="Default select example" id="branchOption">
-                  <option selected>Select Branch</option>
-                  <option selected value="Avissawella Branch">Avissawella Branch</option>
-                  <option selected value="Colombo Branch">Colombo Branch</option>
+                  <option selected value="">Select Branch</option>
+                  <option  value="Avissawella Branch">Avissawella Branch</option>
+                  <option  value="Colombo Branch">Colombo Branch</option>
                 </select>
               </div>
             </div>
@@ -320,11 +325,11 @@
             <button type="button" class="btn btn-success fw-bold col-12 " id="employeeSaveBtn">Save Supplier</button>
           </div>
 
-          <div class="col-12 col-xxl-12 col-xl-12 col-lg-12 col-sm-12 col-md-12 d-flex justify-content-center mt-4 mt-xxl-4 mt-xl-4 mt-lg-4 mt-md-4 mt-sm-4">
+          <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 col-sm-12 col-md-12 d-flex justify-content-center mt-4 mt-xl-4 mt-lg-4 mt-md-4 mt-sm-4">
             <button type="button" class="btn btn-warning fw-bold col-12 " id="employeeUpdateBtn">Update Supplier</button>
           </div>
 
-          <div class="col-12 col-xxl-12 col-xl-12 col-lg-12 col-sm-12 col-md-12 d-flex justify-content-center mt-4 mt-xxl-4 mt-xl-4 mt-lg-4 mt-md-4 mt-sm-4 ">
+          <div class="col-12 col-xxl-6 col-xl-6 col-lg-6 col-sm-12 col-md-12 d-flex justify-content-center mt-4 mt-xl-4 mt-lg-4 mt-md-4 mt-sm-4 ">
             <button type="button" class="btn btn-danger fw-bold col-12 " id="employeeDeleteBtn">Delete Supplier</button>
           </div>
 
@@ -334,7 +339,7 @@
 
       </div>
 
-      <div class="col-12 mt-1 table-responsive p-0 ">
+      <div class="col-12 mt-3 table-responsive p-0 ">
         <table class="table">
           <thead>
           <tr>
